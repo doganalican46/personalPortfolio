@@ -351,8 +351,12 @@
 
                 </div>
                 <div class="col-md-7">
+                    <div id="successAlert" style="display: none;">Email sent successfully!</div>
+
                     <div class="container-form">
-                        <form action="https://formsubmit.co/10133e025d7d033de53bec868b97fcbd" method="post">
+
+                        <form action="https://formsubmit.co/10133e025d7d033de53bec868b97fcbd" method="post"
+                            id="contactForm">
                             <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <input type="text" placeholder="Your Name" id="name"
@@ -387,6 +391,41 @@
                 </div>
             </div>
         </div>
+        <script>
+            const form = document.getElementById('contactForm');
+            const successAlert = document.getElementById('successAlert');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission, we'll handle it manually
+
+                // Fetch the form data and submit it using Fetch API
+                fetch(event.target.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(form)),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success === 'true') {
+                            // Show the success alert
+                            successAlert.style.display = 'block';
+
+                            // Clear the form inputs
+                            form.reset();
+                        } else {
+                            // Handle errors if needed
+                            console.error('Error sending email:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        // Handle errors if needed
+                        console.error('Error sending email:', error);
+                    });
+            });
+        </script>
+
     </section>
     <!-- contact section end -->
 
