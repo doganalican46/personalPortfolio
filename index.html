@@ -347,7 +347,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="container-form">
-                        <form onsubmit="sendEmail(); reset(); return false;">
+                        <form action="sendmail.php" method="post">
                             <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <input type="text" placeholder="Your Name" id="name"
@@ -376,21 +376,6 @@
                                 </div>
                             </div>
                         </form>
-                        <script src="https://smtpjs.com/v3/smtp.js"></script>
-                        <script>
-                            function sendEmail() {
-                                Email.send({
-                                    SecureToken: "a02415fd-ca68-40c9-acff-d9a3ca6a0b63",
-                                    To: 'doganalican46@hotmail.com',
-                                    From: document.getElementById("email").value,
-                                    Subject: document.getElementById("subject").value,
-                                    Body: document.getElementById("message").value
-                                }).then(
-                                    message => alert(message)
-                                );
-                            }
-
-                        </script>
                     </div>
                 </div>
             </div>
