@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="website icon" type="png" href="images/website_icon.png">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
             emailjs.init("uWnEB4TnXLiSdMTEU");
@@ -347,8 +346,21 @@
                 <div class="col-md-7">
 
                     <div class="container-form">
-                        <form action="" method="post" id="contactForm">
-                            <div class="row">
+                        <div class="form-group">
+                            <h5 for="name">Name</h5>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" />
+                        </div>
+                        <div class="form-group">
+                            <h5 for="email">Email</h5>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" />
+                        </div>
+                        <div class="form-group">
+                            <h5 for="message">Message</h5>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="sendMail()">Submit</button>
+                        <!--<form action="" method="post" id="contactForm">
+                             <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <input type="text" placeholder="Your Name" id="name"
                                         class="form-control form-control-lg fs-6 border-0 shadow-sm">
@@ -375,8 +387,8 @@
                                     <button type="submit" class="btn btn-danger px-3" onclick="sendMail()">Send
                                         Message</button>
                                 </div>
-                            </div>
-                        </form>
+                            </div> 
+                        </form>-->
                     </div>
                 </div>
             </div>
