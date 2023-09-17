@@ -381,30 +381,26 @@
                             <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
                                 placeholder="Type your message" rows="3"></textarea>
                         </div>
-                        <button class="btn btn-danger px-3" onclick="sendMail()">Submit</button>
+                        <button class="btn btn-danger px-3" onclick="validateAndSendMail()">Submit</button>
+                        <script>
+                            function validateAndSendMail() {
+                                var name = document.getElementById("name").value;
+                                var email = document.getElementById("email").value;
+                                var subject = document.getElementById("subject").value;
+                                var message = document.getElementById("message").value;
+
+                                if (name === "" || email === "" || subject === "" || message === "") {
+                                    alert("Please fill in all the required fields.");
+                                } else {
+                                    sendMail();
+                                }
+                            }
+                        </script>
 
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Add this script tag before the closing </body> tag -->
-        <script>
-            function sendMail() {
-                var name = document.getElementById("name").value;
-                var email = document.getElementById("email").value;
-                var subject = document.getElementById("subject").value;
-                var message = document.getElementById("message").value;
-
-                if (name === "" || email === "" || subject === "" || message === "") {
-                    alert("You must fill in every section!");
-                } else {
-                    // Code to send the email (SMTP or any other method) goes here
-                }
-            }
-        </script>
-
-
-
 
     </section>
     <!-- contact section end -->
