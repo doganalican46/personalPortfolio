@@ -341,22 +341,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-        function createPortfolioItem(imageUrl, name, githubUrl) {
-            var container = document.querySelector('.container');
-            var portfolioItem = document.createElement('div');
-            portfolioItem.className = 'col-md-6 col-lg-4';
-            portfolioItem.innerHTML = `
-                <div class="portfolio-item">
-                    <img src="${imageUrl}" class="w-100 img-thumbnail" alt="portfolio image">
-                    <h3 class="text-capitalize fs-5 my-2">${name}</h3>
-                    <p><a class="text-danger text-decoration-none" target="_blank" href="${githubUrl}">See Details</a></p>
-                </div>
-            `;
-            container.appendChild(portfolioItem);
-        }
-    </script>
     <!-- portfolio section end -->
 
 
