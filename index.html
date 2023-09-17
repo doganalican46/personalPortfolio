@@ -74,13 +74,14 @@
                             actively working on independent projects and constantly seeking opportunities to expand my
                             knowledge. </p>
                         <a href="#portfolio" class="btn btn-danger px-3 mt-4">My Works</a>
-                        <br> <br><div class="social-links ">
-                            <a href="https://www.facebook.com/doganalican46/" target=”_blank”
-                                class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                        <br> <br>
+                        <div class="social-links ">
+                            <a href="https://www.facebook.com/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                                    class="fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/can_dgn46" target=”_blank” class="text-dark me-2"><i
                                     class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/can.dgn.46/" target=”_blank”
-                                class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/can.dgn.46/" target=”_blank” class="text-dark me-2"><i
+                                    class="fab fa-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank”
                                 class="text-dark me-2"><i class="fab fa-linkedin-in"></i></a>
                             <a href="https://github.com/doganalican46" target=”_blank” class="text-dark me-2"><i
@@ -362,12 +363,12 @@
                             <div class="col-lg-6 mb-4">
                                 <h5 for="name">Name</h5>
                                 <input type="text" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="name" placeholder="Enter your name..." required />
+                                    id="name" placeholder="Enter your name..." />
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <h5 for="email">Email</h5>
                                 <input type="email" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="email" placeholder="Enter your e-mail..." required/>
+                                    id="email" placeholder="Enter your e-mail..." />
                             </div>
                         </div>
                         <div class="col-lg-12 mb-4">
@@ -378,14 +379,30 @@
                         <div class="col-lg-12 mb-4">
                             <h5 for="message">Message</h5>
                             <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
-                                placeholder="Type your message" rows="3" required></textarea>
+                                placeholder="Type your message" rows="3"></textarea>
                         </div>
                         <button class="btn btn-danger px-3" onclick="sendMail()">Submit</button>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Add this script tag before the closing </body> tag -->
+        <script>
+            function sendMail() {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var subject = document.getElementById("subject").value;
+                var message = document.getElementById("message").value;
+
+                if (name === "" || email === "" || subject === "" || message === "") {
+                    alert("You must fill in every section!");
+                } else {
+                    // Code to send the email (SMTP or any other method) goes here
+                }
+            }
+        </script>
+
 
 
 
@@ -402,14 +419,14 @@
                 </div>
             </div>
             <div class="social-links text-center">
-                <a href="https://www.facebook.com/doganalican46/" target=”_blank”
-                    class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                        class="fab fa-facebook-f"></i></a>
                 <a href="https://twitter.com/can_dgn46" target=”_blank” class="text-dark me-2"><i
                         class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/can.dgn.46/" target=”_blank”
-                    class="text-dark me-2"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank”
-                    class="text-dark me-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/can.dgn.46/" target=”_blank” class="text-dark me-2"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                        class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/doganalican46" target=”_blank” class="text-dark me-2"><i
                         class="fab fa-github"></i></a>
             </div>
