@@ -16,6 +16,8 @@
     </script>
     <script src="js/index.js"></script>
 </head>
+
+
 <style>
     .nav-item .nav-link.active {
         font-weight: bold;
@@ -380,9 +382,9 @@
                 const container = document.createElement("div");
                 container.classList.add("container-lg", "py-4");
 
-                const typeTitle = document.createElement("h2");
-                typeTitle.classList.add("fw-bold", "mb-5");
-                typeTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Projects`;
+                const typeTitle = document.createElement("h4");
+                typeTitle.classList.add("fw-normal", "mb-5");
+                typeTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Projects:`;
 
                 const row = document.createElement("div");
                 row.classList.add("row");
