@@ -5,6 +5,7 @@
     <title>Ali Can Dogan - Personal Web Site</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="website icon" type="png" href="images/website_icon.png">
@@ -21,36 +22,6 @@
 
 
     <!-- navbar start -->
-    <style>
-        .nav-item .nav-link.active {
-            font-weight: bold;
-            font-size: 15px;
-            background-color: red;
-            border-radius: 50%;
-            color: white;
-        }
-
-        .nav-item .nav-link.active::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: red;
-            bottom: 0;
-            left: 0;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.8s ease;
-            
-        }
-
-        .nav-item .nav-link.active:hover::after {
-            transform: scaleX(2);
-        }
-    </style>
-
-
-    </style>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <div class="container-lg">
             <a class="navbar-brand text-danger fw-bold fs-4" href="#">Personal Website</a>
@@ -69,26 +40,25 @@
                     <li class="nav-item" data-target="#services">
                         <a class="nav-link" href="#services">What I Do?</a>
                     </li>
-                    <li class="nav-item" data-target="#portfolio">
+                    <li class="nav-item " data-target="#portfolio">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item" data-target="#contact">
+                    <li class="nav-item " data-target="#contact">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".nav-link").click(function () {
-                $(".nav-link").removeClass("active");
-                $(this).addClass("active");
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".nav-link").click(function () {
+                    $(".nav-link").removeClass("active");
+                    $(this).addClass("active");
+                });
             });
-        });
-    </script>
-
+        </script>
+    </nav>
     <!-- navbar end -->
 
 
@@ -134,6 +104,7 @@
     </section>
     <!-- home section end -->
 
+    <a id="scroll-to-top-button" href="#"><i class="fas fa-chevron-up"></i></a>
 
     <!-- about section start -->
     <section class="about py-5 bg-white" id="about">
@@ -326,7 +297,7 @@
                     typeOfProject: "web",
                 },
                 {
-                    name: "Child Monitoring System",
+                    name: "Child Monitoring System (In Progress)",
                     imageSrc: "images/child monitoring.png",
                     detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp",
                     typeOfProject: "android",

@@ -23,3 +23,19 @@ function sendMail() {
 
 }
 
+
+document.addEventListener("DOMContentLoaded", function() {
+  var scrollToTopButton = document.getElementById("scroll-to-top-button");
+
+  window.addEventListener("scroll", function() {
+      if (window.scrollY > 100) {
+          scrollToTopButton.classList.remove("hidden");
+      } else {
+          scrollToTopButton.classList.add("hidden");
+      }
+  });
+
+  scrollToTopButton.addEventListener("click", function() {
+      window.scrollTo(0, 0);
+  });
+});

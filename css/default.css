@@ -1,0 +1,41 @@
+.nav-item .nav-link.active {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.nav-item .nav-link.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+
+}
+
+.nav-item .nav-link.active:hover::after {
+    transform: scaleX(2);
+}
+
+#scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#scroll-to-top-button:hover {
+    background-color: white;
+    color: red;
+    border-style: groove;
+
+}
