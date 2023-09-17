@@ -208,6 +208,7 @@
     <!-- about section end -->
 
 
+
     <!-- service section start -->
     <section class="services py-5" id="services">
         <div class="container-lg py-4">
@@ -218,48 +219,49 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="service-item shadow-sm p-4 rounded bg-white">
-                        <div class="icon my-3 text-danger fs-2">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="fs-5 py-2">Web Development</h3>
-                        <p class="text-muted">I have developed multiple web projects including my graduation project,
-                            using different ways like Python-flask and HTML-CSS-JS/PHP.
-                            <a href="https://github.com/doganalican46" class="text-dark me-2 " target="_blank">See all
-                                on GitHub!</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="service-item shadow-sm p-4 rounded bg-white">
-                        <div class="icon my-3 text-danger fs-2">
-                            <i class="fas fa-computer"></i>
-                        </div>
-                        <h3 class="fs-5 py-2">C/C++</h3>
-                        <p class="text-muted">During my university life, I did many projects and assignments on
-                            object-oriented programming languages such as C/C++.
-                            <a href="https://github.com/doganalican46" class="text-dark me-2 " target="_blank">See all
-                                on GitHub!</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="service-item shadow-sm p-4 rounded bg-white">
-                        <div class="icon my-3 text-danger fs-2">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <h3 class="fs-5 py-2">Desktop Applications</h3>
-                        <p class="text-muted">During my university life, I did many projects and assignments on
-                            object-oriented programming languages such as C/C++.
-                            <a href="https://github.com/doganalican46" class="text-dark me-2 " target="_blank">See all
-                                on GitHub!</a>
-                        </p>
-                    </div>
-                </div>
+            <div class="row text-center" id="service-container">
+
             </div>
         </div>
+        <script>
+            const services = [
+                {
+                    iconClass: "fas fa-code",
+                    title: "Full Stack Web Development",
+                },
+                {
+                    iconClass: "fas fa-desktop",
+                    title: "Desktop Applications",
+                },
+                {
+                    iconClass: "fas fa-mobile-screen",
+                    title: "Android Apps",
+                },
+            ];
+
+            const serviceContainer = document.getElementById("service-container");
+
+            services.forEach((service) => {
+                const serviceItem = document.createElement("div");
+                serviceItem.classList.add("col-md-6", "col-lg-4", "mb-4");
+                serviceItem.innerHTML = `
+                <div class="service-item shadow-sm p-4 rounded bg-white">
+                    <div class="icon my-3 text-danger fs-2">
+                        <i class="${service.iconClass}"></i>
+                    </div>
+                    <h3 class="fs-5 py-2">${service.title}</h3>
+                </div>
+              `;
+                serviceContainer.appendChild(serviceItem);
+            });
+
+            const githubLink = document.createElement("a");
+            githubLink.href = "https://github.com/doganalican46";
+            githubLink.classList.add("text-dark", "me-2");
+            githubLink.target = "_blank";
+            githubLink.textContent = "See all on GitHub!";
+            serviceContainer.appendChild(githubLink);
+        </script>
     </section>
     <!-- service section end -->
 
@@ -278,67 +280,68 @@
                 <script>const portfolioItems = document.getElementById("portfolio-items");</script>
             </div>
         </div>
+        <script>
+            const projects = [
+                {
+                    name: "Bus Tracking System",
+                    imageSrc: "images/bus tracking system.png",
+                    detailsLink: "https://github.com/doganalican46/BusTrackingSystem"
+                },
+                {
+                    name: "EUL-Course Registration System",
+                    imageSrc: "images/EUL- Registration.png",
+                    detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project"
+                },
+                {
+                    name: "Hospital Management System",
+                    imageSrc: "images/hms.png",
+                    detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem"
+                },
+                {
+                    name: "Child Monitoring System",
+                    imageSrc: "images/child monitoring.png",
+                    detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp"
+                },
+                {
+                    name: "University Management System",
+                    imageSrc: "images/university management system.png",
+                    detailsLink: "https://github.com/doganalican46/UniversityManagementSystem"
+                },
+                {
+                    name: "Personal Website",
+                    imageSrc: "images/project.png",
+                    detailsLink: "#"
+                },
+                {
+                    name: "Turtle Game",
+                    imageSrc: "images/turtle game.png",
+                    detailsLink: "https://github.com/doganalican46/TurtleGameWithPython"
+                },
+                {
+                    name: "To Do App (in progress)",
+                    imageSrc: "images/todoapp.png",
+                    detailsLink: "https://github.com/doganalican46/Flutter-Examples"
+                }
+            ];
+
+
+            projects.forEach((project) => {
+                const portfolioItem = document.createElement("div");
+                portfolioItem.classList.add("col-md-6", "col-lg-4");
+
+                portfolioItem.innerHTML = `
+            <div class="portfolio-item">
+                <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
+                <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
+                <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
+            </div>
+        `;
+
+                portfolioItems.appendChild(portfolioItem);
+            });
+        </script>
     </section>
-    <script>
-        const projects = [
-            {
-                name: "Bus Tracking System",
-                imageSrc: "images/bus tracking system.png",
-                detailsLink: "https://github.com/doganalican46/BusTrackingSystem"
-            },
-            {
-                name: "EUL-Course Registration System",
-                imageSrc: "images/EUL- Registration.png",
-                detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project"
-            },
-            {
-                name: "Hospital Management System",
-                imageSrc: "images/hms.png",
-                detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem"
-            },
-            {
-                name: "Child Monitoring System",
-                imageSrc: "images/child monitoring.png",
-                detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp"
-            },
-            {
-                name: "University Management System",
-                imageSrc: "images/university management system.png",
-                detailsLink: "https://github.com/doganalican46/UniversityManagementSystem"
-            },
-            {
-                name: "Personal Website",
-                imageSrc: "images/project.png",
-                detailsLink: "#"
-            },
-            {
-                name: "Turtle Game",
-                imageSrc: "images/turtle game.png",
-                detailsLink: "https://github.com/doganalican46/TurtleGameWithPython"
-            },
-            {
-                name: "To Do App",
-                imageSrc: "images/todoapp.png",
-                detailsLink: "https://github.com/doganalican46/Flutter-Examples"
-            }
-        ];
 
-
-        projects.forEach((project) => {
-            const portfolioItem = document.createElement("div");
-            portfolioItem.classList.add("col-md-6", "col-lg-4");
-
-            portfolioItem.innerHTML = `
-        <div class="portfolio-item">
-            <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
-            <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
-            <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
-        </div>
-    `;
-
-            portfolioItems.appendChild(portfolioItem);
-        });
-    </script>
     <!-- portfolio section end -->
 
 
