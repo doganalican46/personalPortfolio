@@ -362,12 +362,12 @@
                             <div class="col-lg-6 mb-4">
                                 <h5 for="name">Name</h5>
                                 <input type="text" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="name" placeholder="Enter your name..." />
+                                    id="name" placeholder="Enter your name..." required />
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <h5 for="email">Email</h5>
                                 <input type="email" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="email" placeholder="Enter your e-mail..." />
+                                    id="email" placeholder="Enter your e-mail..." required/>
                             </div>
                         </div>
                         <div class="col-lg-12 mb-4">
@@ -378,39 +378,10 @@
                         <div class="col-lg-12 mb-4">
                             <h5 for="message">Message</h5>
                             <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
-                                placeholder="Type your message" rows="3"></textarea>
+                                placeholder="Type your message" rows="3" required></textarea>
                         </div>
                         <button class="btn btn-danger px-3" onclick="sendMail()">Submit</button>
-                        <!--<form action="" method="post" id="contactForm">
-                             <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <input type="text" placeholder="Your Name" id="name"
-                                        class="form-control form-control-lg fs-6 border-0 shadow-sm">
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <input type="email" placeholder="Your E-Mail" id="email"
-                                        class="form-control form-control-lg fs-6 border-0 shadow-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb-4">
-                                    <input type="text" placeholder="Subject" id="subject"
-                                        class="form-control form-control-lg fs-6 border-0 shadow-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb-4">
-                                    <textarea rows="5" placeholder="Your Message" id="message"
-                                        class="form-control form-control-lg fs-6 border-0 shadow-sm"> </textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <button type="submit" class="btn btn-danger px-3" onclick="sendMail()">Send
-                                        Message</button>
-                                </div>
-                            </div> 
-                        </form>-->
+                        
                     </div>
                 </div>
             </div>
