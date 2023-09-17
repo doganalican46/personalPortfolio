@@ -17,13 +17,40 @@
     <script src="js/index.js"></script>
 </head>
 
-
-
-
 <body class="bg-light">
 
 
     <!-- navbar start -->
+    <style>
+        .nav-item .nav-link.active {
+            font-weight: bold;
+            font-size: 15px;
+            background-color: red;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .nav-item .nav-link.active::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: red;
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease;
+            
+        }
+
+        .nav-item .nav-link.active:hover::after {
+            transform: scaleX(2);
+        }
+    </style>
+
+
+    </style>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <div class="container-lg">
             <a class="navbar-brand text-danger fw-bold fs-4" href="#">Personal Website</a>
@@ -33,25 +60,35 @@
             </button>
             <div class="collapse navbar-collapse float-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item" data-target="#home">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-target="#about">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-target="#services">
                         <a class="nav-link" href="#services">What I Do?</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-target="#portfolio">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-target="#contact">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".nav-link").click(function () {
+                $(".nav-link").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
     <!-- navbar end -->
 
 
@@ -148,8 +185,9 @@
                 </div>
                 <div class="col-md-6 mt-5 mt-mt-0">
                     <div id="skills-container"></div>
-                    
-                    <p><a style="color: black;" target="_blank" href="https://www.linkedin.com/in/doganalican46/">Check out my certificates!</a></p>
+
+                    <p><a style="color: black;" target="_blank" href="https://www.linkedin.com/in/doganalican46/">Check
+                            out my certificates!</a></p>
                 </div>
             </div>
         </div>
@@ -272,64 +310,101 @@
                 {
                     name: "Bus Tracking System",
                     imageSrc: "images/bus tracking system.png",
-                    detailsLink: "https://github.com/doganalican46/BusTrackingSystem"
+                    detailsLink: "https://github.com/doganalican46/BusTrackingSystem",
+                    typeOfProject: "web",
                 },
                 {
                     name: "EUL-Course Registration System",
                     imageSrc: "images/EUL- Registration.png",
-                    detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project"
+                    detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project",
+                    typeOfProject: "web",
                 },
                 {
                     name: "Hospital Management System",
                     imageSrc: "images/hms.png",
-                    detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem"
+                    detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem",
+                    typeOfProject: "web",
                 },
                 {
                     name: "Child Monitoring System",
                     imageSrc: "images/child monitoring.png",
-                    detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp"
+                    detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp",
+                    typeOfProject: "android",
                 },
                 {
                     name: "University Management System",
                     imageSrc: "images/university management system.png",
-                    detailsLink: "https://github.com/doganalican46/UniversityManagementSystem"
+                    detailsLink: "https://github.com/doganalican46/UniversityManagementSystem",
+                    typeOfProject: "desktop",
                 },
                 {
                     name: "Personal Website",
                     imageSrc: "images/project.png",
-                    detailsLink: "#"
+                    detailsLink: "#",
+                    typeOfProject: "web",
                 },
                 {
                     name: "Turtle Game",
                     imageSrc: "images/turtle game.png",
-                    detailsLink: "https://github.com/doganalican46/TurtleGameWithPython"
+                    detailsLink: "https://github.com/doganalican46/TurtleGameWithPython",
+                    typeOfProject: "desktop",
                 },
                 {
                     name: "To Do App (in progress)",
                     imageSrc: "images/todoapp.png",
-                    detailsLink: "https://github.com/doganalican46/Flutter-Examples"
-                }
+                    detailsLink: "https://github.com/doganalican46/Flutter-Examples",
+                    typeOfProject: "android",
+                },
             ];
 
+            const projectTypes = {};
 
             projects.forEach((project) => {
-                const portfolioItem = document.createElement("div");
-                portfolioItem.classList.add("col-md-6", "col-lg-4");
+                if (!projectTypes[project.typeOfProject]) {
+                    projectTypes[project.typeOfProject] = [];
+                }
+                projectTypes[project.typeOfProject].push(project);
+            });
 
-                portfolioItem.innerHTML = `
-            <div class="portfolio-item">
-                <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
-                <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
-                <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
-            </div>
-        `;
+            Object.keys(projectTypes).forEach((type) => {
+                const typeSection = document.createElement("section");
+                typeSection.classList.add("py-5", "bg-white");
+                typeSection.id = `${type}-section`;
 
-                portfolioItems.appendChild(portfolioItem);
+                const container = document.createElement("div");
+                container.classList.add("container-lg", "py-4");
+
+                const typeTitle = document.createElement("h2");
+                typeTitle.classList.add("fw-bold", "mb-5");
+                typeTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Projects`;
+
+                const row = document.createElement("div");
+                row.classList.add("row");
+
+                projectTypes[type].forEach((project) => {
+                    const portfolioItem = document.createElement("div");
+                    portfolioItem.classList.add("col-md-6", "col-lg-4");
+
+                    portfolioItem.innerHTML = `
+                    <div class="portfolio-item">
+                        <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
+                        <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
+                        <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
+                    </div>
+                `;
+
+                    row.appendChild(portfolioItem);
+                });
+
+                container.appendChild(typeTitle);
+                container.appendChild(row);
+                typeSection.appendChild(container);
+                portfolioItems.appendChild(typeSection);
             });
         </script>
     </section>
-
     <!-- portfolio section end -->
+
 
 
 
