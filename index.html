@@ -17,6 +17,9 @@
     <script src="js/index.js"></script>
 </head>
 
+
+
+
 <body class="bg-light">
 
 
@@ -271,77 +274,73 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/bus tracking system.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Bus Tracking System</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/BusTrackingSystem">See Details</a></p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/EUL- Registration.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">EUL-Course Registration System</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/EUL-Course-Registration-Project">See Details</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/hms.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Hospital Management System</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/DoctorAppointmentBookingSystem">See Details</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/child monitoring.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Child Monitoring System</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/ChildMonitoringSystemApp">See Details</a></p>
-                    </div>
-                </div>
-                <!-- <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/project.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Chat Application</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank" href="#">See Details</a></p>
-                    </div>
-                </div> -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/university management system.png" class="w-100 img-thumbnail"
-                            alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">University Management System</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/UniversityManagementSystem">See Details</a></p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/project.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Personal Website</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank" href="#">You are here now :D</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="images/turtle game.png" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">Turtle Game</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank"
-                                href="https://github.com/doganalican46/TurtleGameWithPython">See Details</a></p>
-                    </div>
-                </div>
+            <div class="row" id="portfolio-items">
+                <script>const portfolioItems = document.getElementById("portfolio-items");</script>
             </div>
         </div>
     </section>
+    <script>
+        const projects = [
+            {
+                name: "Bus Tracking System",
+                imageSrc: "images/bus tracking system.png",
+                detailsLink: "https://github.com/doganalican46/BusTrackingSystem"
+            },
+            {
+                name: "EUL-Course Registration System",
+                imageSrc: "images/EUL- Registration.png",
+                detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project"
+            },
+            {
+                name: "Hospital Management System",
+                imageSrc: "images/hms.png",
+                detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem"
+            },
+            {
+                name: "Child Monitoring System",
+                imageSrc: "images/child monitoring.png",
+                detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp"
+            },
+            {
+                name: "University Management System",
+                imageSrc: "images/university management system.png",
+                detailsLink: "https://github.com/doganalican46/UniversityManagementSystem"
+            },
+            {
+                name: "Personal Website",
+                imageSrc: "images/project.png",
+                detailsLink: "#"
+            },
+            {
+                name: "Turtle Game",
+                imageSrc: "images/turtle game.png",
+                detailsLink: "https://github.com/doganalican46/TurtleGameWithPython"
+            },
+            {
+                name: "To Do App",
+                imageSrc: "images/todoapp.png",
+                detailsLink: "https://github.com/doganalican46/Flutter-Examples"
+            }
+        ];
+
+
+        projects.forEach((project) => {
+            const portfolioItem = document.createElement("div");
+            portfolioItem.classList.add("col-md-6", "col-lg-4");
+
+            portfolioItem.innerHTML = `
+        <div class="portfolio-item">
+            <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
+            <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
+            <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
+        </div>
+    `;
+
+            portfolioItems.appendChild(portfolioItem);
+        });
+    </script>
     <!-- portfolio section end -->
+
 
 
     <!-- contact section start -->
