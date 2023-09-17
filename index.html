@@ -120,26 +120,7 @@
                             to collaborate effectively within a team, makes me a dedicated individual. My goal is to
                             continuously enhance my programming skills and build strong professional relationships. </p>
                     </div>
-                    <!-- <div class="row text-center text-uppercase my-3">
-                        <div class="col-sm-4">
-                            <div class="fact-item">
-                                <h4 class="fs-1 fw-bold">19</h4>
-                                <p class="text-muted">Total Project</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="fact-item">
-                                <h4 class="fs-1 fw-bold">90</h4>
-                                <p class="text-muted">Another Statistics</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="fact-item">
-                                <h4 class="fs-1 fw-bold">50</h4>
-                                <p class="text-muted">Another Statistics</p>
-                            </div>
-                        </div>
-                    </div> -->
+
                     <div class="row">
                         <div class="col-lg-12 d-flex align-items-center">
 
@@ -166,44 +147,50 @@
                     </div>
                 </div>
                 <div class="col-md-6 mt-5 mt-mt-0">
-                    <div class="skill-item mb-4">
-                        <h3 class="fs-6">HTML</h3>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <h3 class="fs-6">CSS</h3>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <h3 class="fs-6">PHP</h3>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 60%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <h3 class="fs-6">C++</h3>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <h3 class="fs-6">Java</h3>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 60%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    <div id="skills-container"></div>
+                    
+                    <p><a style="color: black; " href="https://www.linkedin.com/in/doganalican46/">Check out my certificates!</a></p>
                 </div>
             </div>
         </div>
+        <script>
+            const skills = [
+                { name: 'HTML', progress: 80 },
+                { name: 'CSS', progress: 40 },
+                { name: 'PHP', progress: 90 },
+                { name: 'C++', progress: 80 },
+                { name: 'Java', progress: 40 },
+                { name: 'Python', progress: 40 }
+            ];
+
+            const skillsContainer = document.getElementById('skills-container');
+
+            skills.forEach(skill => {
+                const skillItem = document.createElement('div');
+                skillItem.className = 'skill-item mb-4';
+
+                const skillTitle = document.createElement('h3');
+                skillTitle.className = 'fs-6';
+                skillTitle.textContent = skill.name;
+
+                const skillProgressBar = document.createElement('div');
+                skillProgressBar.className = 'progress';
+                skillProgressBar.style.height = '5px';
+
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar bg-danger';
+                progressBar.style.width = skill.progress + '%';
+                progressBar.setAttribute('role', 'progressbar');
+                progressBar.setAttribute('aria-valuenow', skill.progress);
+                progressBar.setAttribute('aria-valuemin', '0');
+                progressBar.setAttribute('aria-valuemax', '100');
+
+                skillProgressBar.appendChild(progressBar);
+                skillItem.appendChild(skillTitle);
+                skillItem.appendChild(skillProgressBar);
+                skillsContainer.appendChild(skillItem);
+            });
+        </script>
     </section>
     <!-- about section end -->
 
