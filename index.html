@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="website icon" type="png" href="images/website_icon.png">
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
@@ -458,11 +459,20 @@
                             <input type="text" class="form-control form-control-lg fs-6 border-0 shadow-sm" id="subject"
                                 placeholder="Enter your subject..." />
                         </div>
-                        <div class="col-lg-12 mb-4">
+
+
+
+
+                        <div class="col-lg-12 mb-4" id="editor">
                             <h5 for="message">Message</h5>
                             <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
-                                placeholder="Type your message" rows="3"></textarea>
+                                 placeholder="Type your message"></textarea>
                         </div>
+
+
+
+
+
                         <button class="btn btn-danger px-3" onclick="validateAndSendMail()">Submit</button>
                         <script>
                             function validateAndSendMail() {
@@ -514,6 +524,16 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </body>
 
 </html>
