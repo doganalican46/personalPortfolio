@@ -47,6 +47,16 @@
         padding: 10px 20px;
 
     }
+
+    .card {
+        height: 100%;
+    }
+
+    .card img {
+        height: 200px;
+        /* veya istediğin sabit yükseklik değeri */
+        object-fit: cover;
+    }
 </style>
 
 <body class="bg-light">
@@ -98,9 +108,10 @@
 
 
     <!-- blog section start -->
-    <section class="home py-5 mt-5" id="blog">
+    <section class="home py-5 mt-5 mb-5" id="blog">
         <div class="container-lg">
             <div class="row" id="blogContainer">
+                <h6 class="mb-5">You can read my blogs in this section... </h6>
 
             </div>
         </div>
@@ -154,7 +165,16 @@
                 image: "images/turtle game.png",
                 detay_url: "https://github.com/doganalican46/TurtleGameWithPython",
                 visibility: true
-            }
+            },
+            {
+                id: 3,
+                title: "Turtle Game",
+                content: "detaylar buraya",
+                image: "images/turtle game.png",
+                detay_url: "https://github.com/doganalican46/TurtleGameWithPython",
+                visibility: true
+            },
+           
         ];
 
         // Blogları HTML'e ekleme
@@ -164,13 +184,15 @@
             if (blog.visibility) {
                 var shortContent = blog.content.substring(0, 40);
                 var cardHtml = `
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <div class="card" data-toggle="modal" data-target="#blogModal" data-content="${blog.content}">
-                    <img src="${blog.image}" class="card-img-top img-fluid" alt="${blog.title}">
+                    <div class="card-header">
+                        <img src="${blog.image}" class="card-img-top img-fluid" alt="${blog.title}">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">${blog.title}</h5>
                         <p class="card-text">${shortContent}...</p>
                     </div>
+                    <div class="card-footer"><h5 class="card-title">${blog.title}</h5></div>
                 </div>
             </div>
         `;
@@ -197,7 +219,7 @@
         `;
 
                 modalFooter.innerHTML = `
-            <a href="${detayUrl}" target="_blank" class="btn btn-primary">Detay Gör</a>
+            <a href="${detayUrl}" target="_blank" class="btn btn-primary">See Details</a>
         `;
             }
         });
@@ -208,7 +230,7 @@
 
 
     <!-- footer section start -->
-    <footer class="footer border-top py-4 bg-white fixed-bottom">
+    <footer class="footer border-top py-4 bg-white fixed-bottom mt-5">
         <div class="container-lg">
             <div class="row">
                 <div class="col-lg-12">
