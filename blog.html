@@ -121,31 +121,38 @@
                 <div class="modal-body" id="modalContent">
 
                 </div>
+                <div class="modal-footer" id="modalFooter">
+
+                </div>
             </div>
         </div>
     </div>
+
 
     <script>
         var blogs = [
             {
                 id: 1,
-                title: "JavaScript",
-                content: "Bu birinci blog yazısı içeriğidir. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                image: "images/project.png",
+                title: "Bus Tracking System",
+                content: "detaylar buraya",
+                image: "images/bus tracking system.png",
+                detay_url: "https://github.com/doganalican46/BusTrackingSystem",
                 visibility: true
             },
             {
                 id: 2,
-                title: "HTML",
-                content: "Bu ikinci blog yazısı içeriğidir. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                image: "images/todoapp.png",
-                visibility: false
+                title: "Hospital Management System",
+                content: "detaylar buraya",
+                image: "images/hms.png",
+                detay_url: "https://github.com/doganalican46/DoctorAppointmentBookingSystem",
+                visibility: true
             },
             {
                 id: 3,
-                title: "CSS",
-                content: "Bu üçüncü blog yazısı içeriğidir. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                image: "images/hms.png",
+                title: "Turtle Game",
+                content: "detaylar buraya",
+                image: "images/turtle game.png",
+                detay_url: "https://github.com/doganalican46/TurtleGameWithPython",
                 visibility: true
             }
         ];
@@ -155,7 +162,7 @@
 
         blogs.forEach(function (blog) {
             if (blog.visibility) {
-                var shortContent = blog.content.substring(0, 40); // İlk 40 karakter
+                var shortContent = blog.content.substring(0, 40);
                 var cardHtml = `
             <div class="col-md-4">
                 <div class="card" data-toggle="modal" data-target="#blogModal" data-content="${blog.content}">
@@ -171,23 +178,32 @@
             }
         });
 
-        // Modal içeriğini güncelleme
+        var modalTitle = document.getElementById('blogModalLabel');
         var modalContent = document.getElementById('modalContent');
+        var modalFooter = document.getElementById('modalFooter');
+
         blogContainer.addEventListener('click', function (event) {
             var targetCard = event.target.closest('.card');
             if (targetCard) {
+                var title = targetCard.querySelector('.card-title').textContent;
                 var content = targetCard.getAttribute('data-content');
-                modalContent.innerHTML = `<p>${content}</p>`;
+                var imageSrc = targetCard.querySelector('.card-img-top').getAttribute('src');
+                var detayUrl = targetCard.dataset.detayUrl;
+
+                modalTitle.textContent = title;
+                modalContent.innerHTML = `
+            <img src="${imageSrc}" class="img-fluid" alt="${title}">
+            <p>${content}</p>
+        `;
+
+                modalFooter.innerHTML = `
+            <a href="${detayUrl}" target="_blank" class="btn btn-primary">Detay Gör</a>
+        `;
             }
         });
+
+
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-
-
-
 
 
 
@@ -217,6 +233,9 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 
 </body>
 
