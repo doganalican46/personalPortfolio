@@ -63,25 +63,26 @@
             <div class="collapse navbar-collapse float-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item" data-target="#home">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="index.html#home">Home</a>
                     </li>
                     <li class="nav-item" data-target="#about">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="index.html#about">About</a>
                     </li>
                     <li class="nav-item" data-target="#services">
-                        <a class="nav-link" href="#services">What I Do?</a>
+                        <a class="nav-link" href="index.html#services">What I Do?</a>
                     </li>
                     <li class="nav-item " data-target="#portfolio">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item " data-target="#contact">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="index.html#portfolio">Portfolio</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="blog.html">Blog</a>
                     </li>
+                    <li class="nav-item " data-target="#contact">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
                 </ul>
             </div>
+
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
@@ -96,75 +97,102 @@
     <!-- navbar end -->
 
 
-
     <!-- blog section start -->
-    <section class="home py-5">
+    <section class="home py-5 mt-5" id="blog">
         <div class="container-lg">
-            <div class="row min-vh-100 align-items-center align-content-center">
-                <div id="blogContainer"></div>
+            <div class="row" id="blogContainer">
 
             </div>
         </div>
     </section>
     <!-- blog section end -->
 
-    <!-- Add an empty div with an id to render the blog dynamically -->
+    <!-- Modal -->
+    <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogModalLabel">Detaylı İçerik</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalContent">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Define a blog array with title, content, statistics, and image
-        const blogArray = [
+        var blogs = [
             {
-                title: "First Blog Post",
-                content: "This is the content of the first blog post. It can contain text, images, and more.",
-                statistics: "Views: 100 | Likes: 20 | Comments: 5",
-                imageSrc: "url/to/first/image.jpg",
+                id: 1,
+                title: "JavaScript",
+                content: "Bu birinci blog yazısı içeriğidir. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                image: "images/project.png",
+                visibility: true
             },
             {
-                title: "Second Blog Post",
-                content: "The second blog post covers more exciting topics. Feel free to explore the content.",
-                statistics: "Created at 1.10.2023",
-                imageSrc: "images/EUL- Registration.png",
+                id: 2,
+                title: "HTML",
+                content: "Bu ikinci blog yazısı içeriğidir. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                image: "images/todoapp.png",
+                visibility: false
             },
-            // Add more blog entries as needed
+            {
+                id: 3,
+                title: "CSS",
+                content: "Bu üçüncü blog yazısı içeriğidir. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                image: "images/hms.png",
+                visibility: true
+            }
         ];
 
-        // Function to dynamically render the blog posts
-        function renderBlog() {
-            // Get the blog container element
-            const blogContainer = document.getElementById("blogContainer");
+        // Blogları HTML'e ekleme
+        var blogContainer = document.getElementById('blogContainer');
 
-            // Loop through the blog array and create HTML for each entry
-            blogArray.forEach((blogEntry) => {
-                // Create a new blog card
-                const card = document.createElement("div");
-                card.classList.add("card", "mb-4");
+        blogs.forEach(function (blog) {
+            if (blog.visibility) {
+                var shortContent = blog.content.substring(0, 40); // İlk 40 karakter
+                var cardHtml = `
+            <div class="col-md-4">
+                <div class="card" data-toggle="modal" data-target="#blogModal" data-content="${blog.content}">
+                    <img src="${blog.image}" class="card-img-top img-fluid" alt="${blog.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${blog.title}</h5>
+                        <p class="card-text">${shortContent}...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+                blogContainer.innerHTML += cardHtml;
+            }
+        });
 
-                // Populate the card with title, content, statistics, and image
-                card.innerHTML = `
-        <div class="card-header">${blogEntry.title}</div>
-        <div class="home-img text-center">
-          <img src="${blogEntry.imageSrc}" alt="blog image" width="900"
-                            height="350" >
-        </div>
-        <div class="card-body">${blogEntry.content}</div>
-        <div class="card-footer">${blogEntry.statistics}</div>
-      `;
-
-                // Append the card to the blog container
-                blogContainer.appendChild(card);
-            });
-        }
-
-        // Call the renderBlog function to display the blogs
-        renderBlog();
+        // Modal içeriğini güncelleme
+        var modalContent = document.getElementById('modalContent');
+        blogContainer.addEventListener('click', function (event) {
+            var targetCard = event.target.closest('.card');
+            if (targetCard) {
+                var content = targetCard.getAttribute('data-content');
+                modalContent.innerHTML = `<p>${content}</p>`;
+            }
+        });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
 
 
 
 
 
     <!-- footer section start -->
-    <footer class="footer border-top py-4 bg-white">
+    <footer class="footer border-top py-4 bg-white fixed-bottom">
         <div class="container-lg">
             <div class="row">
                 <div class="col-lg-12">
