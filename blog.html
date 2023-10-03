@@ -111,7 +111,7 @@
     <section class="home py-5 mt-5 mb-5" id="blog">
         <div class="container-lg">
             <div class="row" id="blogContainer">
-                <h6 class="mb-5">You can read my blogs in this section... </h6>
+                <h6 class="mb-5">You can read my blogs in this section, It will available soon.</h6>
 
             </div>
         </div>
@@ -140,15 +140,17 @@
     </div>
 
 
+
     <script>
+
         var blogs = [
             {
                 id: 1,
                 title: "Bus Tracking System",
-                content: "detaylar buraya",
+                content: "detayyyyy",
                 image: "images/bus tracking system.png",
                 detay_url: "https://github.com/doganalican46/BusTrackingSystem",
-                visibility: true
+                visibility: false
             },
             {
                 id: 2,
@@ -156,7 +158,7 @@
                 content: "detaylar buraya",
                 image: "images/hms.png",
                 detay_url: "https://github.com/doganalican46/DoctorAppointmentBookingSystem",
-                visibility: true
+                visibility: false
             },
             {
                 id: 3,
@@ -164,7 +166,7 @@
                 content: "detaylar buraya",
                 image: "images/turtle game.png",
                 detay_url: "https://github.com/doganalican46/TurtleGameWithPython",
-                visibility: true
+                visibility: false
             },
             {
                 id: 3,
@@ -172,12 +174,11 @@
                 content: "detaylar buraya",
                 image: "images/turtle game.png",
                 detay_url: "https://github.com/doganalican46/TurtleGameWithPython",
-                visibility: true
+                visibility: false
             },
-           
+
         ];
 
-        // Blogları HTML'e ekleme
         var blogContainer = document.getElementById('blogContainer');
 
         blogs.forEach(function (blog) {
@@ -210,7 +211,7 @@
                 var title = targetCard.querySelector('.card-title').textContent;
                 var content = targetCard.getAttribute('data-content');
                 var imageSrc = targetCard.querySelector('.card-img-top').getAttribute('src');
-                var detayUrl = targetCard.dataset.detayUrl;
+                var detayUrl = targetCard.dataset.detay_url;
 
                 modalTitle.textContent = title;
                 modalContent.innerHTML = `
