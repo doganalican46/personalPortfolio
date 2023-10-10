@@ -3,22 +3,13 @@
 
 <head>
     <title>Ali Can Dogan - Personal Web Site</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="website icon" type="png" href="images/website_icon.png">
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="js/index.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("uWnEB4TnXLiSdMTEU");
-        })();
+    <script>
+        document.write(unescape('%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22css/bootstrap.min.css%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22css/font-awesome.min.css%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22website%20icon%22%20type%3D%22png%22%20href%3D%22images/website_icon.png%22%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20type%3D%22text/javascript%22%20src%3D%22https%3A//cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20src%3D%22js/index.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20type%3D%22text/javascript%22%3E%0A%20%20%20%20%20%20%20%20%28function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20emailjs.init%28%22uWnEB4TnXLiSdMTEU%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%28%29%3B%0A%20%20%20%20%3C/script%3E'))
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-
 
 <style>
     .nav-item .nav-link.active {
@@ -98,6 +89,7 @@
                 });
             });
         </script>
+
     </nav>
     <!-- navbar end -->
 
@@ -125,18 +117,25 @@
                             knowledge. </p>
                         <a href="#portfolio" class="btn btn-danger px-3 mt-4">My Works</a>
                         <br> <br>
-                        <div class="social-links ">
-                            <a href="https://www.facebook.com/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
+                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a href="https://twitter.com/can_dgn46" target=”_blank” class="text-dark me-2"><i
+                            <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
+                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i
                                     class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/can.dgn.46/" target=”_blank” class="text-dark me-2"><i
+                            <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
+                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
                                     class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank”
-                                class="text-dark me-2"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/doganalican46" target=”_blank” class="text-dark me-2"><i
+                            <a href="https://www.linkedin.com/in/doganalican46/" target="_blank" class="text-dark me-2"
+                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
+                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i
                                     class="fab fa-github"></i></a>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -180,15 +179,21 @@
                             <a href="https://drive.google.com/uc?export=download&id=1etC1FZOYvlypDS9rpIa0opOqRes9oegR"
                                 class="btn px-3 btn-danger me-5" download="CV - Turkish.pdf">Download CV - Turkish </a>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/doganalican46/" target=”_blank”
-                                    class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://twitter.com/can_dgn46" target=”_blank” class="text-dark me-2"><i
+                                <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
+                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
+                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i
                                         class="fab fa-twitter"></i></a>
-                                <a href="https://www.instagram.com/can.dgn.46/" target=”_blank”
-                                    class="text-dark me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank”
-                                    class="text-dark me-2"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/doganalican46" target=”_blank” class="text-dark me-2"><i
+                                <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
+                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/doganalican46/" target="_blank"
+                                    class="text-dark me-2"
+                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
+                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i
                                         class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -321,6 +326,23 @@
             }
         </style>
         <script>
+            function redirectToProjectDetails(event, projectName, detailsLink) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "Redirecting...",
+                    text: `You are being redirected to ${projectName}'s details.`,
+                    icon: "info",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+
+                setTimeout(function () {
+                    window.open(detailsLink, "_blank");
+                }, 2000);
+            }
+
             const projects = [
                 {
                     name: "Bus Tracking System",
@@ -410,7 +432,12 @@
                     <div class="portfolio-item">
                         <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
                         <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
-                        <p><a class="text-danger text-decoration-none" target="_blank" href="${project.detailsLink}">See Details</a></p>
+                        <p>
+                            <a class="text-danger text-decoration-none" href="${project.detailsLink}"
+                               onclick="redirectToProjectDetails(event, '${project.name}', '${project.detailsLink}')">
+                                See Details
+                            </a>
+                        </p>
                     </div>
                 `;
 
@@ -460,21 +487,13 @@
                                 placeholder="Enter your subject..." />
                         </div>
 
-
-
-
                         <div class="col-lg-12 mb-4">
                             <h5 for="message">Message</h5>
                             <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
                                 placeholder="Type your message"></textarea>
                         </div>
 
-
-
-
-
                         <button class="btn btn-danger px-3 mt-5" onclick="validateAndSendMail()">Submit</button>
-
 
                         <script>
                             function validateAndSendMail() {
@@ -484,9 +503,11 @@
                                 var message = document.getElementById("message").value;
 
                                 if (name === "" || email === "" || subject === "" || message === "") {
-                                    alert("Please fill in all the required fields.");
+                                    swal("Mistake!", "Please fill in all the required fields...", "warning");
                                 } else {
                                     sendMail();
+                                    // Display success message
+                                    swal("Success!", "Mail has been sent.", "success");
                                 }
                             }
                         </script>
@@ -495,7 +516,6 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- contact section end -->
 
@@ -509,16 +529,19 @@
                 </div>
             </div>
             <div class="social-links text-center">
-                <a href="https://www.facebook.com/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
+                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
                         class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/can_dgn46" target=”_blank” class="text-dark me-2"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/can.dgn.46/" target=”_blank” class="text-dark me-2"><i
+                <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
+                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
+                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
                         class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/doganalican46/" target=”_blank” class="text-dark me-2"><i
+                <a href="https://www.linkedin.com/in/doganalican46/" target="_blank" class="text-dark me-2"
+                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
                         class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/doganalican46" target=”_blank” class="text-dark me-2"><i
-                        class="fab fa-github"></i></a>
+                <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
+                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
@@ -526,6 +549,27 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function redirectToLink(event, element, accountName) {
+            var link = element.getAttribute("href");
+
+            event.preventDefault();
+
+            Swal.fire({
+                title: "Redirecting...",
+                text: "You are being redirected to " + accountName + "'s account.",
+                icon: "info",
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+
+            setTimeout(function () {
+                window.open(link, "_blank");
+            }, 2000);
+        }
+    </script>
 
 </body>
 
