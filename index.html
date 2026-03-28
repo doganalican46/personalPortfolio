@@ -1,678 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr" class="scroll-smooth">
 <head>
-    <title>Ali Can Dogan - Personal Web Site</title>
-    <script>
-        document.write(unescape('%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22css/bootstrap.min.css%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22css/font-awesome.min.css%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22website%20icon%22%20type%3D%22png%22%20href%3D%22images/website_icon.png%22%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20type%3D%22text/javascript%22%20src%3D%22https%3A//cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20src%3D%22js/index.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20type%3D%22text/javascript%22%3E%0A%20%20%20%20%20%20%20%20%28function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20emailjs.init%28%22uWnEB4TnXLiSdMTEU%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%28%29%3B%0A%20%20%20%20%3C/script%3E'))
-    </script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Can Doğan | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-glow:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); transition: all 0.3s ease; }
+
+        section { min-height: 100vh; display: flex; align-items: center; }
+
+        /* Scroll to Top Butonu için özel stil */
+        #scrollTopBtn {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        #scrollTopBtn.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+    </style>
 </head>
+<body class="selection:bg-red-500/30 selection:text-red-200">
 
-<style>
-    .nav-item .nav-link.active {
-        font-weight: bold;
-        font-size: 15px;
-    }
-
-
-    .nav-item .nav-link.active::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: red;
-        bottom: 0;
-        left: 0;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.8s ease;
-
-    }
-
-    .nav-item .nav-link.active:hover::after {
-        transform: scaleX(2);
-    }
-
-    #scroll-to-top-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 20px;
-    }
-
-    #button-dark {
-        position: fixed;
-        bottom: 20px;
-        right: 80px;
-        padding: 10px 20px;
-    }
-</style>
-
-<body class="bg-light">
-    <!-- <a class="btn btn-dark px-3" id="button-dark" href="#"><i class="fa-solid fa-lightbulb"></i></a> -->
-
-    <a class="btn btn-danger px-3" id="scroll-to-top-button" href="#"><i class="fas fa-chevron-up"></i></a>
-
-
-
-    <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-        <div class="container-lg">
-            <a class="navbar-brand text-danger fw-bold fs-4" href="#">Ali Can Dogan</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse float-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item" data-target="#home">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item" data-target="#about">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item" data-target="#services">
-                        <a class="nav-link" href="#services">What I Do?</a>
-                    </li>
-                     <li class="nav-item " data-target="#portfolio">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li> 
-                    <!-- <li class="nav-item " data-target="#blog">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li> -->
-                    <li class="nav-item " data-target="#contact">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5">
+        <a href="#" class="text-xl font-bold tracking-tighter text-white">
+            <span class="text-red-500">ALLEY</span> SOFTWARE
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="#home" class="hover:text-red-400 transition">Ana Sayfa</a>
+            <a href="#tech" class="hover:text-red-400 transition">Yetenekler</a>
+            <a href="#projects" class="hover:text-red-400 transition">Projeler</a>
+            <a href="#contact" class="hover:text-red-400 transition">İletişim</a>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(".nav-link").click(function () {
-                    $(".nav-link").removeClass("active");
-                    $(this).addClass("active");
-                });
-            });
-        </script>
-
     </nav>
-    <!-- navbar end -->
 
-
-    <!-- home section start -->
-    <section class="home py-5" id="home">
-        <div class="container-lg">
-            <div class="row min-vh-100 align-items-center align-content-center">
-                <div class="col-md-6 mt-5 mt-md-0">
-                    <div class="home-img text-center">
-                        <img src="https://s.tmimgcdn.com/scr/1200x750/419000/i-3d-character-boy-web-developer-with-relevant-environment-1_419093-original.jpg" class="rounded-circle" alt="Profile image" width="300"
-                            height="350">
-                    </div>
+    <section id="home" class="relative overflow-hidden pt-20">
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-red-600/10 rounded-full blur-[100px]"></div>
+        
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <span class="text-red-500 font-semibold tracking-widest text-sm uppercase">Yazılım Mühendisi</span>
+                <h1 class="text-5xl md:text-7xl font-bold mt-4 leading-tight">Ali Can <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Doğan</span></h1>
+                <p class="text-gray-400 mt-6 text-lg max-w-lg leading-relaxed">
+                    Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis. 
+                </p>
+                
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="cv/AliCanDogan-CV-English.pdf" download class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fas fa-file-pdf text-red-500"></i> CV (English)
+                    </a>
+                    <a href="cv/AliCanDogan-CV-Turkce.pdf" download class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fas fa-file-pdf text-red-500"></i> CV (Türkçe)
+                    </a>
                 </div>
-                <div class="col-md-6 mt-5 mt-md-0 order-md-first">
-                    <div class="home-text">
-                        <p class="text-muted mb-1">Hello I'm</p>
-                        <h1 class="text-danger text-uppercase fs-1 fw-bold">Software Engineer</h1>
-                        <h2 class="fs-4">Ali Can Doğan</h2>
-                        <p class="mt-4 text-muted"> I graduated as a software engineer from <a
-                                href="https://www.eul.edu.tr/" class="text-dark me-2 text-decoration-none"
-                                target="_blank">European
-                                University of Lefke</a> where I pursued my studies from 2018 to 2023. Presently, I am
-                            actively working on independent projects and constantly seeking opportunities to expand my
-                            knowledge. </p>
-                        <a href="#portfolio" class="btn btn-danger px-3 mt-4">My Works</a>
-                        <br> <br>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
-                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
-                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i
-                                    class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
-                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/doganalican46/" target="_blank" class="text-dark me-2"
-                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
-                                onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
 
-
-                    </div>
+                <div class="mt-6 flex flex-wrap gap-4">
+                    <a href="#projects" class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold transition-all hover-glow">Projelerimi Gör</a>
+                </div>
+            </div>
+            
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="https://s.tmimgcdn.com/scr/1200x750/419000/i-3d-character-boy-web-developer-with-relevant-environment-1_419093-original.jpg" 
+                         class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-slate-900 shadow-2xl" alt="Ali Can">
                 </div>
             </div>
         </div>
     </section>
-    <!-- home section end -->
 
-
-    <!-- about section start -->
-    <section class="about py-5 bg-white" id="about">
-        <div class="container-lg">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2 class="fw-bold mb-5">About Me</h2>
-                    </div>
+    <section id="tech" class="py-24 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">Yetenekler</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fab fa-cuttlefish text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">C# / .NET</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fas fa-database text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">SQL Server</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fas fa-code text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">ASP.NET MVC</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fab fa-php text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">PHP</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="about-text">
-                        <h3 class="fs-4 mb-3">Hello! I'm Ali Can,</h3>
-                        <p class="text-muted">I am a 24-year-old software engineering student with a passion for web,
-                            Android, and desktop development. Throughout my academic journey, I have gained valuable
-                            experience in these areas, which has allowed me to develop a solid foundation in software
-                            development. I thrive on challenges and embrace innovation in the ever-evolving software
-                            world. My strong adaptability to both Windows and Linux environments, along with my ability
-                            to collaborate effectively within a team, makes me a dedicated individual. My goal is to
-                            continuously enhance my programming skills and build strong professional relationships. </p>
-                    </div>
+        </div>
+    </section>
 
-                    <div class="row">
-                        <div class="col-lg-12 d-flex align-items-center">
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold">Son Projeler</h2>
+                    <p class="text-gray-400 mt-2">Geliştirdiğim güncel çalışmalar.</p>
+                </div>
+                <a href="https://github.com/doganalican46" target="_blank" class="text-red-500 hover:underline">Tümünü Gör <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+            
+            <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </div>
+    </section>
 
-                            <!-- İngilizce CV dosyası -->
-                            <a href="https://drive.google.com/uc?export=download&id=1ctPoDfETsTXSytUQvrx-rG471iOniPeR"
-                                class="btn px-3 btn-danger me-5" download="CV - English.pdf">Download CV - English </a>
-
-                            <!-- Türkçe CV dosyası -->
-                            <a href="https://drive.google.com/uc?export=download&id=1etC1FZOYvlypDS9rpIa0opOqRes9oegR"
-                                class="btn px-3 btn-danger me-5" download="CV - Turkish.pdf">Download CV - Turkish </a>
-                            <div class="social-links">
-                                <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
-                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
-                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
-                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
-                                        class="fab fa-instagram"></i></a>
-                                <a href="https://www.linkedin.com/in/doganalican46/" target="_blank"
-                                    class="text-dark me-2"
-                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
-                                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i
-                                        class="fab fa-github"></i></a>
+    <section id="contact" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="glass max-w-4xl mx-auto rounded-3xl p-8 md:p-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Bir Projen mi Var?</h2>
+                    <p class="text-gray-400 mt-2">Hadi birlikte harika bir şeyler inşa edelim.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-red-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase font-bold">Email</p>
+                                <p class="text-sm">doganalican46@gmail.com</p>
                             </div>
                         </div>
+                        <div class="flex space-x-4 mt-8">
+                            <a href="https://github.com/doganalican46" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/doganalican46/" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 mt-5 mt-mt-0">
-                    <div id="skills-container"></div>
-
-                    <p><a style="color: black;" target="_blank" href="https://www.linkedin.com/in/doganalican46/">Check
-                            out my certificates on LinkedIn!</a></p>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Adınız" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <input type="email" placeholder="E-posta" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <textarea placeholder="Mesajınız" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition"></textarea>
+                        <button type="button" class="w-full py-4 bg-red-600 rounded-xl font-bold hover:bg-red-700 transition hover-glow">Gönder</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <script>
-            const skills = [
-                { name: 'PHP', progress: 90 },
-                { name: 'HTML', progress: 90 },
-                { name: 'Bootstrap', progress: 80 },
-                { name: 'C#', progress: 70 },
-                { name: 'ASP.NET', progress: 90 }
-            ];
-
-            const skillsContainer = document.getElementById('skills-container');
-
-            skills.forEach(skill => {
-                const skillItem = document.createElement('div');
-                skillItem.className = 'skill-item mb-4';
-
-                const skillTitle = document.createElement('h3');
-                skillTitle.className = 'fs-6';
-                skillTitle.textContent = skill.name;
-
-                const skillProgressBar = document.createElement('div');
-                skillProgressBar.className = 'progress';
-                skillProgressBar.style.height = '5px';
-
-                const progressBar = document.createElement('div');
-                progressBar.className = 'progress-bar bg-danger';
-                progressBar.style.width = skill.progress + '%';
-                progressBar.setAttribute('role', 'progressbar');
-                progressBar.setAttribute('aria-valuenow', skill.progress);
-                progressBar.setAttribute('aria-valuemin', '0');
-                progressBar.setAttribute('aria-valuemax', '100');
-
-                skillProgressBar.appendChild(progressBar);
-                skillItem.appendChild(skillTitle);
-                skillItem.appendChild(skillProgressBar);
-                skillsContainer.appendChild(skillItem);
-            });
-        </script>
     </section>
-    <!-- about section end -->
 
+    <footer class="py-10 text-center border-t border-white/5">
+        <p class="text-gray-500 text-sm">&copy; 2026 Ali Can Doğan.</p>
+    </footer>
 
-    <!-- service section start -->
-    <section class="services py-5" id="services">
-        <div class="container-lg py-4">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2 class="fw-bold mb-5">What I do?</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row text-center" id="service-container">
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-8 right-8 z-[100] w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover-glow shadow-2xl">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-            </div>
-        </div>
-        <script>
-            const services = [
-                {
-                    iconClass: "fas fa-code",
-                    title: "Full Stack Web Development",
-                },
-                {
-                    iconClass: "fas fa-desktop",
-                    title: "Desktop Applications",
-                },
-                {
-                    iconClass: "fas fa-mobile-screen",
-                    title: "Android Apps",
-                },
-            ];
-
-            const serviceContainer = document.getElementById("service-container");
-
-            services.forEach((service) => {
-                const serviceItem = document.createElement("div");
-                serviceItem.classList.add("col-md-6", "col-lg-4", "mb-4");
-                serviceItem.innerHTML = `
-                <div class="service-item shadow-sm p-4 rounded bg-white">
-                    <div class="icon my-3 text-danger fs-2">
-                        <i class="${service.iconClass}"></i>
-                    </div>
-                    <h3 class="fs-5 py-2">${service.title}</h3>
-                </div>
-              `;
-                serviceContainer.appendChild(serviceItem);
-            });
-
-            const githubLink = document.createElement("a");
-            githubLink.href = "https://github.com/doganalican46";
-            githubLink.classList.add("text-dark", "me-2");
-            githubLink.target = "_blank";
-            githubLink.textContent = "See all on GitHub!";
-            serviceContainer.appendChild(githubLink);
-        </script>
-    </section>
-    <!-- service section end -->
-
-
-    <!-- portfolio section start -->
-    <section class="portfolio py-5 bg-white" id="portfolio">
-        <div class="container-lg py-4">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2 class="fw-bold mb-5">Latest Projects</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="portfolio-items">
-                <script>const portfolioItems = document.getElementById("portfolio-items");</script>
-            </div>
-        </div>
-        <style>
-            .portfolio-item img {
-                width: 250px;
-                height: 250px;
-            }
-        </style>
-        <script>
-            function redirectToProjectDetails(event, projectName, detailsLink) {
-                event.preventDefault();
-
-                Swal.fire({
-                    title: "Redirecting...",
-                    text: `You are being redirected to ${projectName}'s details.`,
-                    icon: "info",
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                });
-
-                setTimeout(function () {
-                    window.open(detailsLink, "_blank");
-                }, 2000);
-            }
-
-            const projects = [
+    <script>
+        
+   const projects = [
                 {
                     name: "PYTHON | Bus Tracking System",
-                    imageSrc: "images/bus tracking system.png",
+                    img: "images/bus tracking system.png",
                     detailsLink: "https://github.com/doganalican46/BusTrackingSystem",
                     typeOfProject: "web",
                 },
                 {
                     name: "PYTHON | YouTube mp3 Downloader",
-                    imageSrc: "images/mp3downloader.png",
+                    img: "images/mp3downloader.png",
                     detailsLink: "https://github.com/doganalican46/Mp3-Downloader",
                     typeOfProject: "desktop",
                 },
                 {
                     name: "HTML-CSS-JS | EUL-Course Registration System",
-                    imageSrc: "images/EUL- Registration.png",
+                    img: "images/EUL- Registration.png",
                     detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | Lawyer Website with Admin Dashboard",
-                    imageSrc: "images/avukatweb.png",
+                    img: "images/avukatweb.png",
                     detailsLink: "http://www.avdogayilmaz.com.tr",
                     typeOfProject: "web",
                 },
                 {
                     name: "PHP | Hospital Management System",
-                    imageSrc: "images/hms.png",
+                    img: "images/hms.png",
                     detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem",
                     typeOfProject: "web",
                 },
                 {
                     name: "JAVA | Child Monitoring System (In Progress)",
-                    imageSrc: "images/child monitoring.png",
+                    img: "images/child monitoring.png",
                     detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp",
                     typeOfProject: "android",
                 }, 
                 {
                     name: "JAVA | QR CODE GENERATOR & SCANNER",
-                    imageSrc: "images/qrapp.png",
+                    img: "images/qrapp.png",
                     detailsLink: "https://drive.google.com/file/d/1Vs44gpkOGcmojr9o4nVVsiFdEuRwDB0A/view?usp=sharing",
                     typeOfProject: "android",
                 },
                 {
                     name: "JAVA | DÖVİZ UYGULAMASI",
-                    imageSrc: "images/doviz.png",
+                    img: "images/doviz.png",
                     detailsLink: "https://drive.google.com/file/d/1uNygMMz0kHGdd_BdslHONHH9xxYKrea_/view?usp=sharing",
                     typeOfProject: "android",
                 },
                 {
                     name: "C++ | University Management System",
-                    imageSrc: "images/university management system.png",
+                    img: "images/university management system.png",
                     detailsLink: "https://github.com/doganalican46/UniversityManagementSystem",
                     typeOfProject: "desktop",
                 },
                 {
                     name: "HTML-CSS | Personal Website Project",
-                    imageSrc: "images/cv-website.png",
+                    img: "images/cv-website.png",
                     detailsLink: "http://cv-website.free.nf/?i=1",
                     typeOfProject: "web",
                 },
                 {
                     name: "PYTHON | Turtle Game",
-                    imageSrc: "images/turtle game.png",
+                    img: "images/turtle game.png",
                     detailsLink: "https://github.com/doganalican46/TurtleGameWithPython",
                     typeOfProject: "desktop",
                 },
                 {
                     name: "FLUTTER | To Do App (in progress)",
-                    imageSrc: "images/todoapp.png",
+                    img: "images/todoapp.png",
                     detailsLink: "https://github.com/doganalican46/Flutter-Examples",
                     typeOfProject: "android",
                 },
                 {
                     name: "PHP | Bloger Website",
-                    imageSrc: "images/blogwebsite.png",
+                    img: "images/blogwebsite.png",
                     detailsLink: "https://github.com/doganalican46/PHP_BlogWebsite",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | Online Commercial Automation",
-                    imageSrc: "images/mvc-project.png",
+                    img: "images/mvc-project.png",
                     detailsLink: "https://github.com/doganalican46/OnlineTicariOtomasyon",
                     typeOfProject: "web",
                 },
                 {
                     name: "HTML-CSS-JS | QRCode Generator",
-                    imageSrc: "images/QR Code Generator - Homepage Image.png",
+                    img: "images/QR Code Generator - Homepage Image.png",
                     detailsLink: "https://main--qrcode-generator-free.netlify.app/",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | Dynamic CV Website",
-                    imageSrc: "images/dynamiccvwebsite.png",
+                    img: "images/dynamiccvwebsite.png",
                     detailsLink: "https://github.com/doganalican46/DynamicCV_Website/tree/master",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | Movie Blog Website",
-                    imageSrc: "images/movieblog.png",
+                    img: "images/movieblog.png",
                     detailsLink: "https://github.com/doganalican46/MovieBlogWebsite",
                     typeOfProject: "web",
                 }
                 ,
                 {
                     name: "ASP.NET & C# | Stok Takip Uygulaması",
-                    imageSrc: "images/project.png",
+                    img: "images/project.png",
                     detailsLink: "https://github.com/doganalican46/StokTakipMVC",
                     typeOfProject: "web",
                 },
                 // {
                 //     name: "ASP.NET & C# | QR Codlu Sipariş Yönetimi ",
-                //     imageSrc: "images/project.png",
+                //     img: "images/project.png",
                 //     detailsLink: "https://github.com/doganalican46/QRCodeSiparisYonetimi",
                 //     typeOfProject: "web",
                 // },
                 {
                     name: "HTML-CSS-JS | Giyim Web Sitesi",
-                    imageSrc: "images/yakamozmodaevi.png",
+                    img: "images/yakamozmodaevi.png",
                     detailsLink: "https://yakamozmodaevi.netlify.app/",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | Kütüphane Yönetim Sistemi",
-                    imageSrc: "images/kutuphane.png",
+                    img: "images/kutuphane.png",
                     detailsLink: "https://github.com/doganalican46/MVC_KutuphaneSistemi",
                     typeOfProject: "web",
                 },
                 {
                     name: "ASP.NET & C# | QR Menü Sistemi",
-                    imageSrc: "images/Home.png",
+                    img: "images/Home.png",
                     detailsLink: "https://github.com/doganalican46/QRMenuSistemi",
                     typeOfProject: "web",
                 }
                 ,
                 {
                     name: "ASP.NET & C# | Barkodlu Satış Sistemi",
-                    imageSrc: "images/SatisEkran.png",
+                    img: "images/SatisEkran.png",
                     detailsLink: "https://github.com/doganalican46/LordMarket",
                     typeOfProject: "web",
                 }
                 ,
                 {
                     name: "ASP.NET & C# | QR Menü ve Adisyon Sistemi",
-                    imageSrc: "images/QR Menü Sistemi.png",
+                    img: "images/QR Menü Sistemi.png",
                     detailsLink: "https://github.com/doganalican46/QRMenuSistemiRevize",
                     typeOfProject: "web",
                 }
             ];
 
-            const projectTypes = {};
+        // Scroll Butonu Görünürlüğü
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
 
-            projects.forEach((project) => {
-                if (!projectTypes[project.typeOfProject]) {
-                    projectTypes[project.typeOfProject] = [];
-                }
-                projectTypes[project.typeOfProject].push(project);
-            });
+        // EmailJS Init
+        (function(){
+            emailjs.init("uWnEB4TnXLiSdMTEU");
+        })();
 
-            Object.keys(projectTypes).forEach((type) => {
-                const typeSection = document.createElement("section");
-                typeSection.classList.add("py-5", "bg-white");
-                typeSection.id = `${type}-section`;
+        // Projeleri ekrana basan döngü
+const grid = document.getElementById('project-grid');
 
-                const container = document.createElement("div");
-                container.classList.add("container-lg", "py-4");
+// Grid içeriğini temizleyelim (varsa eski içeriği siler)
+grid.innerHTML = ''; 
 
-                const typeTitle = document.createElement("h4");
-                typeTitle.classList.add("fw-bold", "mb-5");
-                typeTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Projects:`;
-
-                const row = document.createElement("div");
-                row.classList.add("row");
-
-                projectTypes[type].forEach((project) => {
-                    const portfolioItem = document.createElement("div");
-                    portfolioItem.classList.add("col-md-6", "col-lg-4");
-
-                    portfolioItem.innerHTML = `
-                    <div class="portfolio-item">
-                        <img src="${project.imageSrc}" class="w-100 img-thumbnail" alt="portfolio image">
-                        <h3 class="text-capitalize fs-5 my-2">${project.name}</h3>
-                        <p>
-                            <a class="text-danger text-decoration-none" href="${project.detailsLink}"
-                               onclick="redirectToProjectDetails(event, '${project.name}', '${project.detailsLink}')">
-                                See Details
-                            </a>
-                        </p>
-                    </div>
-                `;
-
-                    row.appendChild(portfolioItem);
-                });
-
-                container.appendChild(typeTitle);
-                container.appendChild(row);
-                typeSection.appendChild(container);
-                portfolioItems.appendChild(typeSection);
-            });
-        </script>
-    </section>
-    <!-- portfolio section end -->
-
-
-    <!-- contact section start -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <section class="contact py-5 " id="contact">
-        <div class="container-lg py-4">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2 class="fw-bold mb-5">Contact Me</h2>
-                    </div>
-                </div>
+projects.forEach(project => {
+    const card = `
+        <div class="group relative overflow-hidden rounded-3xl glass transition-all duration-500 hover:-translate-y-2">
+            <div class="h-48 overflow-hidden">
+                <img src="${project.img}" alt="${project.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-100" onerror="this.src='https://via.placeholder.com/400x250?text=Proje+Görseli'">
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-
-                    <div class="container-form">
-                        <div class="row">
-                            <div class="col-lg-6 mb-4">
-                                <h5 for="name">Name</h5>
-                                <input type="text" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="name" placeholder="Enter your name..." />
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <h5 for="email">Email</h5>
-                                <input type="email" class="form-control form-control-lg fs-6 border-0 shadow-sm"
-                                    id="email" placeholder="Enter your e-mail..." />
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-4">
-                            <h5 for="subject">Subject</h5>
-                            <input type="text" class="form-control form-control-lg fs-6 border-0 shadow-sm" id="subject"
-                                placeholder="Enter your subject..." />
-                        </div>
-
-                        <div class="col-lg-12 mb-4">
-                            <h5 for="message">Message</h5>
-                            <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" id="message"
-                                placeholder="Type your message"></textarea>
-                        </div>
-
-                        <button class="btn btn-danger px-3 mt-5" onclick="validateAndSendMail()">Submit</button>
-
-                        <script>
-                            function validateAndSendMail() {
-                                var name = document.getElementById("name").value;
-                                var email = document.getElementById("email").value;
-                                var subject = document.getElementById("subject").value;
-                                var message = document.getElementById("message").value;
-
-                                if (name === "" || email === "" || subject === "" || message === "") {
-                                    swal("Mistake!", "Please fill in all the required fields...", "warning");
-                                } else {
-                                    sendMail();
-                                    // Display success message
-                                    swal("Success!", "Mail has been sent.", "success");
-                                }
-                            }
-                        </script>
-
-                    </div>
-                </div>
+            <div class="p-6">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-widest">${project.typeOfProject}</span>
+                <h3 class="text-lg font-bold mt-1 mb-4 text-white group-hover:text-red-400 transition-colors">${project.name}</h3>
+                <a href="${project.detailsLink}" target="_blank" class="text-sm font-semibold inline-flex items-center gap-2 text-gray-300 hover:text-white transition-all">
+                    Projeyi İncele <i class="fas fa-external-link-alt text-[10px]"></i>
+                </a>
             </div>
         </div>
-    </section>
-    <!-- contact section end -->
-
-
-    <!-- footer section start -->
-    <footer class="footer border-top py-4 bg-white">
-        <div class="container-lg">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="m-0 text-center text-muted">&copy; Ali Can Doğan</p>
-                </div>
-            </div>
-            <div class="social-links text-center">
-                <a href="https://www.facebook.com/doganalican46/" target="_blank" class="text-dark me-2"
-                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Facebook')"><i
-                        class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/can_dgn46" target="_blank" class="text-dark me-2"
-                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Twitter')"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/can.dgn.46/" target="_blank" class="text-dark me-2"
-                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s Instagram')"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/doganalican46/" target="_blank" class="text-dark me-2"
-                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s LinkedIn')"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/doganalican46" target="_blank" class="text-dark me-2"
-                    onclick="redirectToLink(event, this, 'Ali Can Doğan\'s GitHub')"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
-    <!-- footer section end -->
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-
-    <script>
-        function redirectToLink(event, element, accountName) {
-            var link = element.getAttribute("href");
-
-            event.preventDefault();
-
-            Swal.fire({
-                title: "Redirecting...",
-                text: "You are being redirected to " + accountName + "'s account.",
-                icon: "info",
-                timer: 2000,
-                timerProgressBar: true,
-                showConfirmButton: false
-            });
-
-            setTimeout(function () {
-                window.open(link, "_blank");
-            }, 2000);
-        }
+    `;
+    grid.innerHTML += card;
+});
     </script>
-
 </body>
-
 </html>
