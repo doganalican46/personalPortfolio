@@ -68,21 +68,35 @@
 
 <body class="selection:bg-red-500/30 selection:text-red-200">
 
-    <nav
-        class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5">
-        <a href="#" class="text-xl font-bold tracking-tighter text-white">
-            <span class="text-red-500">ALLEY</span> SOFTWARE
-        </a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-            <a href="#home" data-i18n="nav_home" class="hover:text-red-400 transition">Ana Sayfa</a>
-            <a href="#tech" data-i18n="nav_skills" class="hover:text-red-400 transition">Yetenekler</a>
-            <a href="#projects" data-i18n="nav_projects" class="hover:text-red-400 transition">Projeler</a>
-            <a href="#contact" data-i18n="nav_contact" class="hover:text-red-400 transition">İletişim</a>
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
+        <div class="container mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
 
-            <button id="langToggle"
-                class="px-3 py-1 glass rounded-lg text-xs font-bold border border-red-500/30 hover:bg-red-500/10 transition">
-                EN
+            <a href="#" class="text-xl font-bold tracking-tighter text-white">
+                <span class="text-red-500">ALLEY</span> SOFTWARE
+            </a>
+
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
             </button>
+
+            <div id="navMenu"
+                class="hidden absolute top-full left-0 w-full bg-[#0f172a]/95 backdrop-blur-lg border-b border-white/5 flex-col p-6 space-y-6 
+                   md:static md:w-auto md:bg-transparent md:backdrop-blur-none md:border-none md:flex md:flex-row md:space-y-0 md:p-0 md:space-x-8 text-sm font-medium items-center transition-all duration-300">
+
+                <a href="#home" data-i18n="nav_home"
+                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Ana Sayfa</a>
+                <a href="#tech" data-i18n="nav_skills"
+                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Yetenekler</a>
+                <a href="#projects" data-i18n="nav_projects"
+                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Projeler</a>
+                <a href="#contact" data-i18n="nav_contact"
+                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">İletişim</a>
+
+                <button id="langToggle"
+                    class="px-4 py-1.5 rounded-full text-xs font-bold border border-red-500/40 hover:bg-red-500 hover:text-white transition-all duration-300">
+                    EN
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -228,88 +242,88 @@
     </button>
 
     <script>
-    // --- ÇEVİRİ SÖZLÜĞÜ ---
-    const translations = {
-        tr: {
-            nav_home: "Ana Sayfa", nav_skills: "Yetenekler", nav_projects: "Projeler", nav_contact: "İletişim",
-            hero_badge: "Yazılım Mühendisi", hero_desc: "Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.", hero_btn: "Projelerimi Gör",
-            skills_title: "Yetenekler", projects_title: "Son Projeler", projects_subtitle: "Geliştirdiğim güncel çalışmalar.", projects_all: "Tümünü Gör",
-            contact_title: "Bir Projen mi Var?", contact_subtitle: "Hadi birlikte harika bir şeyler inşa edelim.", contact_btn: "Gönder",
-            form_name: "Adınız", form_email: "E-posta", form_msg: "Mesajınız",
-            inspect: "Projeyi İncele"
-        },
-        en: {
-            nav_home: "Home", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
-            hero_badge: "Software Engineer", hero_desc: "An engineer focused on modern web technologies and system architectures.", hero_btn: "View My Projects",
-            skills_title: "Skills", projects_title: "Recent Projects", projects_subtitle: "Latest works I've developed.", projects_all: "View All",
-            contact_title: "Have a Project?", contact_subtitle: "Let's build something great together.", contact_btn: "Send Message",
-            form_name: "Your Name", form_email: "Email", form_msg: "Your Message",
-            inspect: "View Project"
-        }
-    };
-
-    const projects = [
-        { name_tr: "PYTHON | Otobüs Takip Sistemi", name_en: "PYTHON | Bus Tracking System", img: "images/bus tracking system.png", detailsLink: "https://github.com/doganalican46/BusTrackingSystem", type: "Web" },
-        { name_tr: "PYTHON | YouTube mp3 İndirici", name_en: "PYTHON | YouTube mp3 Downloader", img: "images/mp3downloader.png", detailsLink: "https://github.com/doganalican46/Mp3-Downloader", type: "Desktop" },
-        { name_tr: "HTML-CSS-JS | LAÜ-Ders Kayıt Sistemi", name_en: "HTML-CSS-JS | EUL-Course Registration System", img: "images/EUL- Registration.png", detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project", type: "Web" },
-        { name_tr: "ASP.NET & C# | Yönetim Panelli Avukat Sitesi", name_en: "ASP.NET & C# | Lawyer Website with Admin Dashboard", img: "images/avukatweb.png", detailsLink: "http://www.avdogayilmaz.com.tr", type: "Web" },
-        { name_tr: "PHP | Hastane Yönetim Sistemi", name_en: "PHP | Hospital Management System", img: "images/hms.png", detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem", type: "Web" },
-        { name_tr: "JAVA | Çocuk Takip Sistemi (Yapım Aşamasında)", name_en: "JAVA | Child Monitoring System (In Progress)", img: "images/child monitoring.png", detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp", type: "Android" },
-        { name_tr: "JAVA | QR Kod Oluşturucu & Tarayıcı", name_en: "JAVA | QR CODE GENERATOR & SCANNER", img: "images/qrapp.png", detailsLink: "https://drive.google.com/file/d/1Vs44gpkOGcmojr9o4nVVsiFdEuRwDB0A/view?usp=sharing", type: "Android" },
-        { name_tr: "JAVA | Döviz Uygulaması", name_en: "JAVA | Currency App", img: "images/doviz.png", detailsLink: "https://drive.google.com/file/d/1uNygMMz0kHGdd_BdslHONHH9xxYKrea_/view?usp=sharing", type: "Android" },
-        { name_tr: "C++ | Üniversite Yönetim Sistemi", name_en: "C++ | University Management System", img: "images/university management system.png", detailsLink: "https://github.com/doganalican46/UniversityManagementSystem", type: "Desktop" },
-        { name_tr: "HTML-CSS | Kişisel Web Sitesi Projesi", name_en: "HTML-CSS | Personal Website Project", img: "images/cv-website.png", detailsLink: "http://cv-website.free.nf/?i=1", type: "Web" },
-        { name_tr: "PYTHON | Kaplumbağa Oyunu", name_en: "PYTHON | Turtle Game", img: "images/turtle game.png", detailsLink: "https://github.com/doganalican46/TurtleGameWithPython", type: "Desktop" },
-        { name_tr: "FLUTTER | Yapılacaklar Listesi (Yapım Aşamasında)", name_en: "FLUTTER | To Do App (In Progress)", img: "images/todoapp.png", detailsLink: "https://github.com/doganalican46/Flutter-Examples", type: "Android" },
-        { name_tr: "PHP | Blog Web Sitesi", name_en: "PHP | Bloger Website", img: "images/blogwebsite.png", detailsLink: "https://github.com/doganalican46/PHP_BlogWebsite", type: "Web" },
-        { name_tr: "ASP.NET & C# | Online Ticari Otomasyon", name_en: "ASP.NET & C# | Online Commercial Automation", img: "images/mvc-project.png", detailsLink: "https://github.com/doganalican46/OnlineTicariOtomasyon", type: "Web" },
-        { name_tr: "HTML-CSS-JS | QR Kod Oluşturucu", name_en: "HTML-CSS-JS | QRCode Generator", img: "images/QR Code Generator - Homepage Image.png", detailsLink: "https://main--qrcode-generator-free.netlify.app/", type: "Web" },
-        { name_tr: "ASP.NET & C# | Dinamik CV Sitesi", name_en: "ASP.NET & C# | Dynamic CV Website", img: "images/dynamiccvwebsite.png", detailsLink: "https://github.com/doganalican46/DynamicCV_Website/tree/master", type: "Web" },
-        { name_tr: "ASP.NET & C# | Film Blog Sitesi", name_en: "ASP.NET & C# | Movie Blog Website", img: "images/movieblog.png", detailsLink: "https://github.com/doganalican46/MovieBlogWebsite", type: "Web" },
-        { name_tr: "ASP.NET & C# | Stok Takip Uygulaması", name_en: "ASP.NET & C# | Stock Tracking App", img: "images/project.png", detailsLink: "https://github.com/doganalican46/StokTakipMVC", type: "Web" },
-        { name_tr: "HTML-CSS-JS | Giyim Web Sitesi", name_en: "HTML-CSS-JS | Clothing Website", img: "images/yakamozmodaevi.png", detailsLink: "https://yakamozmodaevi.netlify.app/", type: "Web" },
-        { name_tr: "ASP.NET & C# | Kütüphane Yönetim Sistemi", name_en: "ASP.NET & C# | Library Management System", img: "images/kutuphane.png", detailsLink: "https://github.com/doganalican46/MVC_KutuphaneSistemi", type: "Web" },
-        { name_tr: "ASP.NET & C# | QR Menü Sistemi", name_en: "ASP.NET & C# | QR Menu System", img: "images/Home.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemi", type: "Web" },
-        { name_tr: "ASP.NET & C# | Barkodlu Satış Sistemi", name_en: "ASP.NET & C# | Barcode Sales System", img: "images/SatisEkran.png", detailsLink: "https://github.com/doganalican46/LordMarket", type: "Web" },
-        { name_tr: "ASP.NET & C# | QR Menü ve Adisyon Sistemi", name_en: "ASP.NET & C# | QR Menu & Billing System", img: "images/QR Menü Sistemi.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemiRevize", type: "Web" }
-    ];
-
-    let currentLang = 'tr';
-
-    function updateLanguage(lang) {
-        currentLang = lang;
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                el.textContent = translations[lang][key];
+        // --- ÇEVİRİ SÖZLÜĞÜ ---
+        const translations = {
+            tr: {
+                nav_home: "Ana Sayfa", nav_skills: "Yetenekler", nav_projects: "Projeler", nav_contact: "İletişim",
+                hero_badge: "Yazılım Mühendisi", hero_desc: "Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.", hero_btn: "Projelerimi Gör",
+                skills_title: "Yetenekler", projects_title: "Son Projeler", projects_subtitle: "Geliştirdiğim güncel çalışmalar.", projects_all: "Tümünü Gör",
+                contact_title: "Bir Projen mi Var?", contact_subtitle: "Hadi birlikte harika bir şeyler inşa edelim.", contact_btn: "Gönder",
+                form_name: "Adınız", form_email: "E-posta", form_msg: "Mesajınız",
+                inspect: "Projeyi İncele"
+            },
+            en: {
+                nav_home: "Home", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
+                hero_badge: "Software Engineer", hero_desc: "An engineer focused on modern web technologies and system architectures.", hero_btn: "View My Projects",
+                skills_title: "Skills", projects_title: "Recent Projects", projects_subtitle: "Latest works I've developed.", projects_all: "View All",
+                contact_title: "Have a Project?", contact_subtitle: "Let's build something great together.", contact_btn: "Send Message",
+                form_name: "Your Name", form_email: "Email", form_msg: "Your Message",
+                inspect: "View Project"
             }
-        });
+        };
 
-        // Form Placeholders
-        const nameField = document.getElementById('form_name');
-        const emailField = document.getElementById('form_email');
-        const msgField = document.getElementById('form_msg');
+        const projects = [
+            { name_tr: "PYTHON | Otobüs Takip Sistemi", name_en: "PYTHON | Bus Tracking System", img: "images/bus tracking system.png", detailsLink: "https://github.com/doganalican46/BusTrackingSystem", type: "Web" },
+            { name_tr: "PYTHON | YouTube mp3 İndirici", name_en: "PYTHON | YouTube mp3 Downloader", img: "images/mp3downloader.png", detailsLink: "https://github.com/doganalican46/Mp3-Downloader", type: "Desktop" },
+            { name_tr: "HTML-CSS-JS | LAÜ-Ders Kayıt Sistemi", name_en: "HTML-CSS-JS | EUL-Course Registration System", img: "images/EUL- Registration.png", detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project", type: "Web" },
+            { name_tr: "ASP.NET & C# | Yönetim Panelli Avukat Sitesi", name_en: "ASP.NET & C# | Lawyer Website with Admin Dashboard", img: "images/avukatweb.png", detailsLink: "http://www.avdogayilmaz.com.tr", type: "Web" },
+            { name_tr: "PHP | Hastane Yönetim Sistemi", name_en: "PHP | Hospital Management System", img: "images/hms.png", detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem", type: "Web" },
+            { name_tr: "JAVA | Çocuk Takip Sistemi (Yapım Aşamasında)", name_en: "JAVA | Child Monitoring System (In Progress)", img: "images/child monitoring.png", detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp", type: "Android" },
+            { name_tr: "JAVA | QR Kod Oluşturucu & Tarayıcı", name_en: "JAVA | QR CODE GENERATOR & SCANNER", img: "images/qrapp.png", detailsLink: "https://drive.google.com/file/d/1Vs44gpkOGcmojr9o4nVVsiFdEuRwDB0A/view?usp=sharing", type: "Android" },
+            { name_tr: "JAVA | Döviz Uygulaması", name_en: "JAVA | Currency App", img: "images/doviz.png", detailsLink: "https://drive.google.com/file/d/1uNygMMz0kHGdd_BdslHONHH9xxYKrea_/view?usp=sharing", type: "Android" },
+            { name_tr: "C++ | Üniversite Yönetim Sistemi", name_en: "C++ | University Management System", img: "images/university management system.png", detailsLink: "https://github.com/doganalican46/UniversityManagementSystem", type: "Desktop" },
+            { name_tr: "HTML-CSS | Kişisel Web Sitesi Projesi", name_en: "HTML-CSS | Personal Website Project", img: "images/cv-website.png", detailsLink: "http://cv-website.free.nf/?i=1", type: "Web" },
+            { name_tr: "PYTHON | Kaplumbağa Oyunu", name_en: "PYTHON | Turtle Game", img: "images/turtle game.png", detailsLink: "https://github.com/doganalican46/TurtleGameWithPython", type: "Desktop" },
+            { name_tr: "FLUTTER | Yapılacaklar Listesi (Yapım Aşamasında)", name_en: "FLUTTER | To Do App (In Progress)", img: "images/todoapp.png", detailsLink: "https://github.com/doganalican46/Flutter-Examples", type: "Android" },
+            { name_tr: "PHP | Blog Web Sitesi", name_en: "PHP | Bloger Website", img: "images/blogwebsite.png", detailsLink: "https://github.com/doganalican46/PHP_BlogWebsite", type: "Web" },
+            { name_tr: "ASP.NET & C# | Online Ticari Otomasyon", name_en: "ASP.NET & C# | Online Commercial Automation", img: "images/mvc-project.png", detailsLink: "https://github.com/doganalican46/OnlineTicariOtomasyon", type: "Web" },
+            { name_tr: "HTML-CSS-JS | QR Kod Oluşturucu", name_en: "HTML-CSS-JS | QRCode Generator", img: "images/QR Code Generator - Homepage Image.png", detailsLink: "https://main--qrcode-generator-free.netlify.app/", type: "Web" },
+            { name_tr: "ASP.NET & C# | Dinamik CV Sitesi", name_en: "ASP.NET & C# | Dynamic CV Website", img: "images/dynamiccvwebsite.png", detailsLink: "https://github.com/doganalican46/DynamicCV_Website/tree/master", type: "Web" },
+            { name_tr: "ASP.NET & C# | Film Blog Sitesi", name_en: "ASP.NET & C# | Movie Blog Website", img: "images/movieblog.png", detailsLink: "https://github.com/doganalican46/MovieBlogWebsite", type: "Web" },
+            { name_tr: "ASP.NET & C# | Stok Takip Uygulaması", name_en: "ASP.NET & C# | Stock Tracking App", img: "images/project.png", detailsLink: "https://github.com/doganalican46/StokTakipMVC", type: "Web" },
+            { name_tr: "HTML-CSS-JS | Giyim Web Sitesi", name_en: "HTML-CSS-JS | Clothing Website", img: "images/yakamozmodaevi.png", detailsLink: "https://yakamozmodaevi.netlify.app/", type: "Web" },
+            { name_tr: "ASP.NET & C# | Kütüphane Yönetim Sistemi", name_en: "ASP.NET & C# | Library Management System", img: "images/kutuphane.png", detailsLink: "https://github.com/doganalican46/MVC_KutuphaneSistemi", type: "Web" },
+            { name_tr: "ASP.NET & C# | QR Menü Sistemi", name_en: "ASP.NET & C# | QR Menu System", img: "images/Home.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemi", type: "Web" },
+            { name_tr: "ASP.NET & C# | Barkodlu Satış Sistemi", name_en: "ASP.NET & C# | Barcode Sales System", img: "images/SatisEkran.png", detailsLink: "https://github.com/doganalican46/LordMarket", type: "Web" },
+            { name_tr: "ASP.NET & C# | QR Menü ve Adisyon Sistemi", name_en: "ASP.NET & C# | QR Menu & Billing System", img: "images/QR Menü Sistemi.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemiRevize", type: "Web" }
+        ];
 
-        if (nameField) nameField.placeholder = translations[lang].form_name;
-        if (emailField) emailField.placeholder = translations[lang].form_email;
-        if (msgField) msgField.placeholder = translations[lang].form_msg;
+        let currentLang = 'tr';
 
-        // Toggle Butonu Metni
-        const langBtn = document.getElementById('langToggle');
-        if (langBtn) langBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
 
-        renderProjects();
-    }
+            // Form Placeholders
+            const nameField = document.getElementById('form_name');
+            const emailField = document.getElementById('form_email');
+            const msgField = document.getElementById('form_msg');
 
-    function renderProjects() {
-        const grid = document.getElementById('project-grid');
-        if (!grid) return;
+            if (nameField) nameField.placeholder = translations[lang].form_name;
+            if (emailField) emailField.placeholder = translations[lang].form_email;
+            if (msgField) msgField.placeholder = translations[lang].form_msg;
 
-        grid.innerHTML = '';
-        projects.forEach(project => {
-            const projectName = currentLang === 'tr' ? project.name_tr : project.name_en;
+            // Toggle Butonu Metni
+            const langBtn = document.getElementById('langToggle');
+            if (langBtn) langBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
 
-            grid.innerHTML += `
+            renderProjects();
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('project-grid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            projects.forEach(project => {
+                const projectName = currentLang === 'tr' ? project.name_tr : project.name_en;
+
+                grid.innerHTML += `
             <div class="group relative overflow-hidden rounded-3xl glass transition-all duration-500 hover:-translate-y-2">
                 <div class="h-48 overflow-hidden">
                     <img src="${project.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-60 group-hover:opacity-100" onerror="this.src='https://via.placeholder.com/400x250?text=Project'">
@@ -322,73 +336,91 @@
                     </a>
                 </div>
             </div>`;
-        });
-    }
-
-    // --- TEK VE DOĞRU İLETİŞİM FORMU GÖNDERİM MANTIĞI ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const btn = document.getElementById('submit-btn');
-            const originalText = btn.textContent;
-
-            btn.textContent = currentLang === 'tr' ? "Gönderiliyor..." : "Sending...";
-            btn.disabled = true;
-
-            // EmailJS Gönderimi - SIRALAMA: (Service_ID, Template_ID)
-            emailjs.sendForm('service_iwvrrn9', 'template_eqlf6i6', this)
-                .then(() => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: currentLang === 'tr' ? 'Başarılı!' : 'Success!',
-                        text: currentLang === 'tr' ? 'Mesajınız başarıyla iletildi.' : 'Your message has been sent successfully.',
-                        background: '#1e293b',
-                        color: '#fff',
-                        confirmButtonColor: '#ef4444'
-                    });
-                    this.reset();
-                }, (error) => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: currentLang === 'tr' ? 'Hata!' : 'Error!',
-                        text: currentLang === 'tr' ? 'Mesaj gönderilemedi. Lütfen tekrar deneyin.' : 'Failed to send message.',
-                        footer: `Hata: ${error.text || 'Lütfen Gmail bağlantınızı kontrol edin.'}`,
-                        background: '#1e293b',
-                        color: '#fff',
-                        confirmButtonColor: '#ef4444'
-                    });
-                })
-                .finally(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                });
-        });
-    }
-
-    // Lang Switch Click
-    document.getElementById('langToggle').addEventListener('click', () => {
-        updateLanguage(currentLang === 'tr' ? 'en' : 'tr');
-    });
-
-    // Scroll Top Button Logic
-    window.onscroll = () => {
-        const btn = document.getElementById("scrollTopBtn");
-        if (btn) {
-            if (document.documentElement.scrollTop > 400) btn.classList.add("show");
-            else btn.classList.remove("show");
+            });
         }
-    };
 
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-        updateLanguage('tr');
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init("uWnEB4TnXLiSdMTEU");
+        // --- TEK VE DOĞRU İLETİŞİM FORMU GÖNDERİM MANTIĞI ---
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const btn = document.getElementById('submit-btn');
+                const originalText = btn.textContent;
+
+                btn.textContent = currentLang === 'tr' ? "Gönderiliyor..." : "Sending...";
+                btn.disabled = true;
+
+                // EmailJS Gönderimi - SIRALAMA: (Service_ID, Template_ID)
+                emailjs.sendForm('service_iwvrrn9', 'template_eqlf6i6', this)
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: currentLang === 'tr' ? 'Başarılı!' : 'Success!',
+                            text: currentLang === 'tr' ? 'Mesajınız başarıyla iletildi.' : 'Your message has been sent successfully.',
+                            background: '#1e293b',
+                            color: '#fff',
+                            confirmButtonColor: '#ef4444'
+                        });
+                        this.reset();
+                    }, (error) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: currentLang === 'tr' ? 'Hata!' : 'Error!',
+                            text: currentLang === 'tr' ? 'Mesaj gönderilemedi. Lütfen tekrar deneyin.' : 'Failed to send message.',
+                            footer: `Hata: ${error.text || 'Lütfen Gmail bağlantınızı kontrol edin.'}`,
+                            background: '#1e293b',
+                            color: '#fff',
+                            confirmButtonColor: '#ef4444'
+                        });
+                    })
+                    .finally(() => {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    });
+            });
         }
-    });
-</script>
+
+        // Lang Switch Click
+        document.getElementById('langToggle').addEventListener('click', () => {
+            updateLanguage(currentLang === 'tr' ? 'en' : 'tr');
+        });
+
+        // Scroll Top Button Logic
+        window.onscroll = () => {
+            const btn = document.getElementById("scrollTopBtn");
+            if (btn) {
+                if (document.documentElement.scrollTop > 400) btn.classList.add("show");
+                else btn.classList.remove("show");
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage('tr');
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("uWnEB4TnXLiSdMTEU");
+            }
+        });
+        // Mobil Menü Açma/Kapama
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+        });
+
+        // Linklere tıklandığında menüyü kapat (Mobilde)
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('flex');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
