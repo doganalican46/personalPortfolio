@@ -137,11 +137,11 @@
                             <a href="https://www.linkedin.com/in/doganalican46/" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <form class="space-y-4">
-                        <input type="text" id="form_name" placeholder="Adınız" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
-                        <input type="email" id="form_email" placeholder="E-posta" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
-                        <textarea id="form_msg" placeholder="Mesajınız" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition"></textarea>
-                        <button type="button" data-i18n="contact_btn" class="w-full py-4 bg-red-600 rounded-xl font-bold hover:bg-red-700 transition hover-glow">Gönder</button>
+                    <form id="contact-form" class="space-y-4">
+                        <input type="text" id="form_name" name="from_name" required placeholder="Adınız" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <input type="email" id="form_email" name="from_email" required placeholder="E-posta" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <textarea id="form_msg" name="message" required placeholder="Mesajınız" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition"></textarea>
+                        <button type="submit" id="submit-btn" data-i18n="contact_btn" class="w-full py-4 bg-red-600 rounded-xl font-bold hover:bg-red-700 transition hover-glow">Gönder</button>
                     </form>
                 </div>
             </div>
@@ -277,6 +277,43 @@
             emailjs.init("uWnEB4TnXLiSdMTEU");
         }
     });
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Sayfanın yenilenmesini engeller
+
+    const btn = document.getElementById('submit-btn');
+    const originalText = btn.textContent;
+    
+    // Gönderiliyor efekti
+    btn.textContent = currentLang === 'tr' ? "Gönderiliyor..." : "Sending...";
+    btn.disabled = true;
+
+    // EmailJS Gönderimi
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: currentLang === 'tr' ? 'Başarılı!' : 'Success!',
+                text: currentLang === 'tr' ? 'Mesajınız başarıyla iletildi.' : 'Your message has been sent.',
+                background: '#1e293b',
+                color: '#fff',
+                confirmButtonColor: '#ef4444'
+            });
+            document.getElementById('contact-form').reset(); // Formu temizle
+        }, (error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: 'Mesaj gönderilemedi: ' + JSON.stringify(error),
+                background: '#1e293b',
+                color: '#fff'
+            });
+        })
+        .finally(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
+});
 </script>
 </body>
 </html>
