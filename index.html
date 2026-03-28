@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Can Doğan | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hover-glow:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); transition: all 0.3s ease; }
+        section { min-height: 100vh; display: flex; align-items: center; }
+        #scrollTopBtn { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(100px); opacity: 0; }
+        #scrollTopBtn.show { transform: translateY(0); opacity: 1; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+    </style>
+</head>
+<body class="selection:bg-red-500/30 selection:text-red-200">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5">
+        <a href="#" class="text-xl font-bold tracking-tighter text-white">
+            <span class="text-red-500">ALLEY</span> SOFTWARE
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="#home" data-i18n="nav_home" class="hover:text-red-400 transition">Ana Sayfa</a>
+            <a href="#tech" data-i18n="nav_skills" class="hover:text-red-400 transition">Yetenekler</a>
+            <a href="#projects" data-i18n="nav_projects" class="hover:text-red-400 transition">Projeler</a>
+            <a href="#contact" data-i18n="nav_contact" class="hover:text-red-400 transition">İletişim</a>
+            
+            <button id="langToggle" class="px-3 py-1 glass rounded-lg text-xs font-bold border border-red-500/30 hover:bg-red-500/10 transition">
+                EN
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="relative overflow-hidden pt-20">
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-red-600/10 rounded-full blur-[100px]"></div>
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <span data-i18n="hero_badge" class="text-red-500 font-semibold tracking-widest text-sm uppercase">Yazılım Mühendisi</span>
+                <h1 class="text-5xl md:text-7xl font-bold mt-4 leading-tight">Ali Can <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Doğan</span></h1>
+                <p data-i18n="hero_desc" class="text-gray-400 mt-6 text-lg max-w-lg leading-relaxed">
+                    Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis. 
+                </p>
+                
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="cv/AliCanDogan-CV-English.pdf" download class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fas fa-file-pdf text-red-500"></i> CV (English)
+                    </a>
+                    <a href="cv/AliCanDogan-CV-Turkce.pdf" download class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fas fa-file-pdf text-red-500"></i> CV (Türkçe)
+                    </a>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-4">
+                    <a href="#projects" data-i18n="hero_btn" class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold transition-all hover-glow">Projelerimi Gör</a>
+                </div>
+            </div>
+            
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="https://s.tmimgcdn.com/scr/1200x750/419000/i-3d-character-boy-web-developer-with-relevant-environment-1_419093-original.jpg" 
+                         class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-slate-900 shadow-2xl" alt="Ali Can">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-24 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <h2 data-i18n="skills_title" class="text-3xl font-bold text-center mb-16">Yetenekler</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fab fa-cuttlefish text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">C# / .NET</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fas fa-database text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">SQL Server</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fas fa-code text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">ASP.NET MVC</h3>
+                </div>
+                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
+                    <i class="fab fa-php text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">PHP</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 data-i18n="projects_title" class="text-3xl font-bold">Son Projeler</h2>
+                    <p data-i18n="projects_subtitle" class="text-gray-400 mt-2">Geliştirdiğim güncel çalışmalar.</p>
+                </div>
+                <a href="https://github.com/doganalican46" target="_blank" class="text-red-500 hover:underline">
+                    <span data-i18n="projects_all">Tümünü Gör</span> <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+            <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="glass max-w-4xl mx-auto rounded-3xl p-8 md:p-12">
+                <div class="text-center mb-12">
+                    <h2 data-i18n="contact_title" class="text-3xl font-bold">Bir Projen mi Var?</h2>
+                    <p data-i18n="contact_subtitle" class="text-gray-400 mt-2">Hadi birlikte harika bir şeyler inşa edelim.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-red-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase font-bold">Email</p>
+                                <p class="text-sm">doganalican46@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 mt-8">
+                            <a href="https://github.com/doganalican46" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/doganalican46/" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <form class="space-y-4">
+                        <input type="text" id="form_name" placeholder="Adınız" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <input type="email" id="form_email" placeholder="E-posta" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
+                        <textarea id="form_msg" placeholder="Mesajınız" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition"></textarea>
+                        <button type="button" data-i18n="contact_btn" class="w-full py-4 bg-red-600 rounded-xl font-bold hover:bg-red-700 transition hover-glow">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-white/5">
+        <p class="text-gray-500 text-sm">&copy; 2026 Ali Can Doğan.</p>
+    </footer>
+
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-8 right-8 z-[100] w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover-glow shadow-2xl">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // --- ÇEVİRİ SÖZLÜĞÜ ---
+        const translations = {
+            tr: {
+                nav_home: "Ana Sayfa", nav_skills: "Yetenekler", nav_projects: "Projeler", nav_contact: "İletişim",
+                hero_badge: "Yazılım Mühendisi", hero_desc: "Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.", hero_btn: "Projelerimi Gör",
+                skills_title: "Yetenekler", projects_title: "Son Projeler", projects_subtitle: "Geliştirdiğim güncel çalışmalar.", projects_all: "Tümünü Gör",
+                contact_title: "Bir Projen mi Var?", contact_subtitle: "Hadi birlikte harika bir şeyler inşa edelim.", contact_btn: "Gönder",
+                form_name: "Adınız", form_email: "E-posta", form_msg: "Mesajınız",
+                inspect: "Projeyi İncele"
+            },
+            en: {
+                nav_home: "Home", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
+                hero_badge: "Software Engineer", hero_desc: "An engineer focused on modern web technologies and system architectures.", hero_btn: "View My Projects",
+                skills_title: "Skills", projects_title: "Recent Projects", projects_subtitle: "Latest works I've developed.", projects_all: "View All",
+                contact_title: "Have a Project?", contact_subtitle: "Let's build something great together.", contact_btn: "Send Message",
+                form_name: "Your Name", form_email: "Email", form_msg: "Your Message",
+                inspect: "View Project"
+            }
+        };
+
+        const projects = [
+            { name: "PYTHON | Bus Tracking System", img: "images/bus tracking system.png", detailsLink: "https://github.com/doganalican46/BusTrackingSystem", type: "Web" },
+            { name: "PYTHON | YouTube mp3 Downloader", img: "images/mp3downloader.png", detailsLink: "https://github.com/doganalican46/Mp3-Downloader", type: "Desktop" },
+            { name: "ASP.NET & C# | Lawyer Website", img: "images/avukatweb.png", detailsLink: "http://www.avdogayilmaz.com.tr", type: "Web" },
+            { name: "JAVA | Child Monitoring System", img: "images/child monitoring.png", detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp", type: "Android" },
+            { name: "PHP | Hospital Management", img: "images/hms.png", detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem", type: "Web" },
+            { name: "ASP.NET & C# | QR Menu System", img: "images/Home.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemi", type: "Web" }
+            // Diğer projeleri buraya eklemeye devam edebilirsin...
+        ];
+
+        let currentLang = 'tr';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[lang][key];
+            });
+
+            // Form Placeholders
+            document.getElementById('form_name').placeholder = translations[lang].form_name;
+            document.getElementById('form_email').placeholder = translations[lang].form_email;
+            document.getElementById('form_msg').placeholder = translations[lang].form_msg;
+
+            // Toggle Butonu Metni
+            document.getElementById('langToggle').textContent = lang === 'tr' ? 'EN' : 'TR';
+            
+            renderProjects();
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('project-grid');
+            grid.innerHTML = '';
+            projects.forEach(project => {
+                grid.innerHTML += `
+                    <div class="group relative overflow-hidden rounded-3xl glass transition-all duration-500 hover:-translate-y-2">
+                        <div class="h-48 overflow-hidden">
+                            <img src="${project.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-60 group-hover:opacity-100" onerror="this.src='https://via.placeholder.com/400x250?text=Project'">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-red-500 uppercase tracking-widest">${project.type}</span>
+                            <h3 class="text-lg font-bold mt-1 mb-4 text-white group-hover:text-red-400 transition-colors">${project.name}</h3>
+                            <a href="${project.detailsLink}" target="_blank" class="text-sm font-semibold inline-flex items-center gap-2 text-gray-300 hover:text-white transition-all">
+                                ${translations[currentLang].inspect} <i class="fas fa-external-link-alt text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Lang Switch Click
+        document.getElementById('langToggle').addEventListener('click', () => {
+            updateLanguage(currentLang === 'tr' ? 'en' : 'tr');
+        });
+
+        // Scroll
+        window.onscroll = () => {
+            const btn = document.getElementById("scrollTopBtn");
+            if (document.documentElement.scrollTop > 400) btn.classList.add("show");
+            else btn.classList.remove("show");
+        };
+
+        // Init
+        updateLanguage('tr');
+        emailjs.init("uWnEB4TnXLiSdMTEU");
+    </script>
+</body>
+</html>
