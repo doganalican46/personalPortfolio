@@ -1,426 +1,227 @@
-<!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
-
+<!doctype html>
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Can Doğan | Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hover-glow:hover {
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        #scrollTopBtn {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(100px);
-            opacity: 0;
-        }
-
-        #scrollTopBtn.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ef4444;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ali Can Doğan'ın web, masaüstü ve mobil yazılım projelerini içeren kişisel portfolyosu.">
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ali Can Doğan | Software Engineer">
+  <meta property="og:description" content="Modern web teknolojileri ve sistem mimarileri üzerine odaklanan yazılım mühendisi.">
+  <meta property="og:url" content="https://www.doganalican46.dev/">
+  <title>Ali Can Doğan | Software Engineer</title>
+  <link rel="icon" href="images/website_icon.png">
+  <link rel="preload" href="images/2.png" as="image">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body class="selection:bg-red-500/30 selection:text-red-200">
+<body>
+  <a class="skip-link" href="#main-content" data-i18n="skip_content">İçeriğe geç</a>
 
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
-        <div class="container mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+  <header class="site-header" id="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#home" aria-label="ALLEY Software ana sayfa">
+        <span>ALLEY</span> SOFTWARE
+      </a>
 
-            <a href="#" class="text-xl font-bold tracking-tighter text-white">
-                <span class="text-red-500">ALLEY</span> SOFTWARE
+      <button class="menu-toggle" id="mobile-menu-button" type="button" aria-label="Menüyü aç"
+        aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Ana navigasyon" data-open="false">
+        <a href="#home" data-i18n="nav_home">Ana Sayfa</a>
+        <a href="#skills" data-i18n="nav_skills">Yetenekler</a>
+        <a href="#projects" data-i18n="nav_projects">Projeler</a>
+        <a href="#contact" data-i18n="nav_contact">İletişim</a>
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section" id="home" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow"><span aria-hidden="true"></span><span data-i18n="hero_badge">Yazılım Mühendisi</span></p>
+          <h1 id="hero-title">Ali Can <span>Doğan</span></h1>
+          <p class="hero-description" data-i18n="hero_desc">
+            Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">
+              <span data-i18n="hero_btn">Projelerimi Gör</span>
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+            </a>
+            <a class="button button-secondary" href="#contact" data-i18n="hero_contact">İletişime Geç</a>
+          </div>
+
+          <div class="cv-links" aria-label="Özgeçmiş dosyaları">
+            <a href="cv/AliCanDogan-CV-Turkce.pdf" download>
+              <i class="fa-regular fa-file-pdf" aria-hidden="true"></i>
+              CV — Türkçe
+            </a>
+            <a href="cv/AliCanDogan-CV-English.pdf" download>
+              <i class="fa-regular fa-file-pdf" aria-hidden="true"></i>
+              CV — English
+            </a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="portrait-orbit" aria-hidden="true"></div>
+          <figure class="portrait-frame">
+            <img src="images/2.png" width="640" height="640" alt="Ali Can Doğan" fetchpriority="high">
+          </figure>
+          <div class="portrait-label" aria-hidden="true">
+            <span class="status-dot"></span>
+            <span data-i18n="hero_focus">Web · Mobil · Masaüstü</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="section-kicker" data-i18n="skills_kicker">Teknik yetkinlikler</p>
+          <h2 id="skills-title" data-i18n="skills_title">Yetenekler</h2>
+          <p data-i18n="skills_intro">Fikirden çalışan ürüne uzanan süreçte kullandığım temel teknolojiler.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+            <p class="skill-index">01</p>
+            <h3>C# / .NET</h3>
+            <p data-i18n="skill_dotnet">Web ve masaüstü uygulamalar için sürdürülebilir çözümler.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+            <p class="skill-index">02</p>
+            <h3>SQL Server</h3>
+            <p data-i18n="skill_sql">Veri modelleme, sorgulama ve uygulama entegrasyonu.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-window-maximize" aria-hidden="true"></i></div>
+            <p class="skill-index">03</p>
+            <h3>ASP.NET MVC</h3>
+            <p data-i18n="skill_mvc">Katmanlı mimariye sahip yönetilebilir web uygulamaları.</p>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-php" aria-hidden="true"></i></div>
+            <p class="skill-index">04</p>
+            <h3>PHP</h3>
+            <p data-i18n="skill_php">Dinamik, veri odaklı web deneyimleri ve yönetim panelleri.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading projects-heading">
+          <div>
+            <p class="section-kicker" data-i18n="projects_kicker">Seçilmiş çalışmalar</p>
+            <h2 id="projects-title" data-i18n="projects_title">Projeler</h2>
+            <p data-i18n="projects_subtitle">Web, mobil ve masaüstü platformlarında geliştirdiğim çalışmalar.</p>
+          </div>
+          <a class="text-link" href="https://github.com/doganalican46" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="projects_all">GitHub profilini gör</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="project-toolbar">
+          <div class="project-filters" role="group" aria-label="Projeleri filtrele">
+            <button class="filter-button active" type="button" data-filter="All" aria-pressed="true" data-i18n="filter_all">Tümü</button>
+            <button class="filter-button" type="button" data-filter="Web" aria-pressed="false">Web</button>
+            <button class="filter-button" type="button" data-filter="Android" aria-pressed="false">Android</button>
+            <button class="filter-button" type="button" data-filter="Desktop" aria-pressed="false" data-i18n="filter_desktop">Masaüstü</button>
+          </div>
+          <p class="project-count" id="project-count" aria-live="polite"></p>
+        </div>
+
+        <div class="project-grid" id="project-grid"></div>
+
+        <noscript>
+          <p class="noscript-message">Projeleri görüntülemek için tarayıcınızda JavaScript'i etkinleştirin.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <p class="section-kicker" data-i18n="contact_kicker">Birlikte çalışalım</p>
+            <h2 id="contact-title" data-i18n="contact_title">Bir projen mi var?</h2>
+            <p data-i18n="contact_subtitle">Fikrini, hedefini veya çözmek istediğin problemi konuşalım.</p>
+
+            <a class="contact-email" href="mailto:doganalican46@gmail.com">
+              <span class="contact-icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
+              <span>
+                <small data-i18n="email_label">E-posta</small>
+                doganalican46@gmail.com
+              </span>
             </a>
 
-            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
+            <div class="social-links">
+              <a href="https://github.com/doganalican46" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/doganalican46/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contact-form">
+            <div class="form-field">
+              <label for="form-name" data-i18n="form_name">Adınız</label>
+              <input type="text" id="form-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="form-email" data-i18n="form_email">E-posta adresiniz</label>
+              <input type="email" id="form-email" name="email" autocomplete="email" required>
+            </div>
+            <input type="hidden" name="subject" value="Portfolyo İletişim Mesajı">
+            <div class="form-field">
+              <label for="form-message" data-i18n="form_message">Mesajınız</label>
+              <textarea id="form-message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="button button-primary submit-button" id="submit-button" type="submit">
+              <span data-i18n="contact_btn">Mesajı Gönder</span>
+              <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
             </button>
-
-            <div id="navMenu"
-                class="hidden absolute top-full left-0 w-full bg-[#0f172a]/95 backdrop-blur-lg border-b border-white/5 flex-col p-6 space-y-6 
-                   md:static md:w-auto md:bg-transparent md:backdrop-blur-none md:border-none md:flex md:flex-row md:space-y-0 md:p-0 md:space-x-8 text-sm font-medium items-center transition-all duration-300">
-
-                <a href="#home" data-i18n="nav_home"
-                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Ana Sayfa</a>
-                <a href="#tech" data-i18n="nav_skills"
-                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Yetenekler</a>
-                <a href="#projects" data-i18n="nav_projects"
-                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">Projeler</a>
-                <a href="#contact" data-i18n="nav_contact"
-                    class="hover:text-red-500 transition-colors w-full md:w-auto text-center">İletişim</a>
-
-                <button id="langToggle"
-                    class="px-4 py-1.5 rounded-full text-xs font-bold border border-red-500/40 hover:bg-red-500 hover:text-white transition-all duration-300">
-                    EN
-                </button>
-            </div>
+            <p class="form-note" data-i18n="form_note">Bilgileriniz yalnızca mesajınıza dönüş yapmak için kullanılır.</p>
+          </form>
         </div>
-    </nav>
-
-    <section id="home" class="relative overflow-hidden pt-20">
-        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-red-600/10 rounded-full blur-[100px]"></div>
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1">
-                <span data-i18n="hero_badge"
-                    class="text-red-500 font-semibold tracking-widest text-sm uppercase">Yazılım Mühendisi</span>
-                <h1 class="text-5xl md:text-7xl font-bold mt-4 leading-tight">Ali Can <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Doğan</span>
-                </h1>
-                <p data-i18n="hero_desc" class="text-gray-400 mt-6 text-lg max-w-lg leading-relaxed">
-                    Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.
-                </p>
-
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="cv/AliCanDogan-CV-English.pdf" download
-                        class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
-                        <i class="fas fa-file-pdf text-red-500"></i> CV (English)
-                    </a>
-                    <a href="cv/AliCanDogan-CV-Turkce.pdf" download
-                        class="px-6 py-3 glass rounded-xl text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
-                        <i class="fas fa-file-pdf text-red-500"></i> CV (Türkçe)
-                    </a>
-                </div>
-
-                <div class="mt-6 flex flex-wrap gap-4">
-                    <a href="#projects" data-i18n="hero_btn"
-                        class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold transition-all hover-glow">Projelerimi
-                        Gör</a>
-                </div>
-            </div>
-
-            <div class="order-1 md:order-2 flex justify-center">
-                <div class="relative group">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000">
-                    </div>
-                    <img src="images/2.png"
-                        class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-slate-900 shadow-2xl"
-                        alt="Ali Can">
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
+  </main>
 
-    <section id="tech" class="py-24 bg-slate-900/50">
-        <div class="container mx-auto px-6">
-            <h2 data-i18n="skills_title" class="text-3xl font-bold text-center mb-16">Yetenekler</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
-                    <i class="fab fa-cuttlefish text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
-                    <h3 class="font-bold">C# / .NET</h3>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
-                    <i class="fas fa-database text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
-                    <h3 class="font-bold">SQL Server</h3>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
-                    <i class="fas fa-code text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
-                    <h3 class="font-bold">ASP.NET MVC</h3>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center hover-glow group transition">
-                    <i class="fab fa-php text-4xl mb-4 text-red-500 group-hover:scale-110 transition"></i>
-                    <h3 class="font-bold">PHP</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <a class="brand" href="#home"><span>ALLEY</span> SOFTWARE</a>
+      <p>© <span id="current-year">2026</span> Ali Can Doğan. <span data-i18n="footer_rights">Tüm hakları saklıdır.</span></p>
+    </div>
+  </footer>
 
-    <section id="projects" class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 data-i18n="projects_title" class="text-3xl font-bold">Son Projeler</h2>
-                    <p data-i18n="projects_subtitle" class="text-gray-400 mt-2">Geliştirdiğim güncel çalışmalar.</p>
-                </div>
-                <a href="https://github.com/doganalican46" target="_blank" class="text-red-500 hover:underline">
-                    <span data-i18n="projects_all">Tümünü Gör</span> <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                </a>
-            </div>
-            <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-        </div>
-    </section>
+  <button class="scroll-top" id="scroll-top" type="button" aria-label="Sayfanın başına dön" hidden>
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
-    <section id="contact" class="py-24 relative">
-        <div class="container mx-auto px-6">
-            <div class="glass max-w-4xl mx-auto rounded-3xl p-8 md:p-12">
-                <div class="text-center mb-12">
-                    <h2 data-i18n="contact_title" class="text-3xl font-bold">Bir Projen mi Var?</h2>
-                    <p data-i18n="contact_subtitle" class="text-gray-400 mt-2">Hadi birlikte harika bir şeyler inşa
-                        edelim.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-red-500">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-bold">Email</p>
-                                <p class="text-sm">doganalican46@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="flex space-x-4 mt-8">
-                            <a href="https://github.com/doganalican46"
-                                class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/doganalican46/"
-                                class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-red-500 transition"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <form id="contact-form" class="space-y-4">
-                        <input type="text" id="form_name" name="name" required placeholder="Adınız"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
-
-                        <input type="email" id="form_email" name="email" required placeholder="E-posta"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition">
-
-                        <input type="hidden" name="subject" value="Portfolyo İletişim Mesajı">
-
-                        <textarea id="form_msg" name="message" required placeholder="Mesajınız" rows="4"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-red-500 outline-none transition"></textarea>
-
-                        <button type="submit" id="submit-btn" data-i18n="contact_btn"
-                            class="w-full py-4 bg-red-600 rounded-xl font-bold hover:bg-red-700 transition hover-glow">
-                            Gönder
-                        </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center border-t border-white/5">
-        <p class="text-gray-500 text-sm">&copy; 2026 Ali Can Doğan.</p>
-    </footer>
-
-    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-        class="fixed bottom-8 right-8 z-[100] w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover-glow shadow-2xl">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <script>
-        // --- ÇEVİRİ SÖZLÜĞÜ ---
-        const translations = {
-            tr: {
-                nav_home: "Ana Sayfa", nav_skills: "Yetenekler", nav_projects: "Projeler", nav_contact: "İletişim",
-                hero_badge: "Yazılım Mühendisi", hero_desc: "Modern web teknolojileri ve sistem mimarileri üzerine odaklanan bir mühendis.", hero_btn: "Projelerimi Gör",
-                skills_title: "Yetenekler", projects_title: "Son Projeler", projects_subtitle: "Geliştirdiğim güncel çalışmalar.", projects_all: "Tümünü Gör",
-                contact_title: "Bir Projen mi Var?", contact_subtitle: "Hadi birlikte harika bir şeyler inşa edelim.", contact_btn: "Gönder",
-                form_name: "Adınız", form_email: "E-posta", form_msg: "Mesajınız",
-                inspect: "Projeyi İncele"
-            },
-            en: {
-                nav_home: "Home", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
-                hero_badge: "Software Engineer", hero_desc: "An engineer focused on modern web technologies and system architectures.", hero_btn: "View My Projects",
-                skills_title: "Skills", projects_title: "Recent Projects", projects_subtitle: "Latest works I've developed.", projects_all: "View All",
-                contact_title: "Have a Project?", contact_subtitle: "Let's build something great together.", contact_btn: "Send Message",
-                form_name: "Your Name", form_email: "Email", form_msg: "Your Message",
-                inspect: "View Project"
-            }
-        };
-
-        const projects = [
-            { name_tr: "PYTHON | Otobüs Takip Sistemi", name_en: "PYTHON | Bus Tracking System", img: "images/bus tracking system.png", detailsLink: "https://github.com/doganalican46/BusTrackingSystem", type: "Web" },
-            { name_tr: "PYTHON | YouTube mp3 İndirici", name_en: "PYTHON | YouTube mp3 Downloader", img: "images/mp3downloader.png", detailsLink: "https://github.com/doganalican46/Mp3-Downloader", type: "Desktop" },
-            { name_tr: "HTML-CSS-JS | LAÜ-Ders Kayıt Sistemi", name_en: "HTML-CSS-JS | EUL-Course Registration System", img: "images/EUL- Registration.png", detailsLink: "https://github.com/doganalican46/EUL-Course-Registration-Project", type: "Web" },
-            { name_tr: "ASP.NET & C# | Yönetim Panelli Avukat Sitesi", name_en: "ASP.NET & C# | Lawyer Website with Admin Dashboard", img: "images/avukatweb.png", detailsLink: "http://www.avdogayilmaz.com.tr", type: "Web" },
-            { name_tr: "PHP | Hastane Yönetim Sistemi", name_en: "PHP | Hospital Management System", img: "images/hms.png", detailsLink: "https://github.com/doganalican46/DoctorAppointmentBookingSystem", type: "Web" },
-            { name_tr: "JAVA | Çocuk Takip Sistemi (Yapım Aşamasında)", name_en: "JAVA | Child Monitoring System (In Progress)", img: "images/child monitoring.png", detailsLink: "https://github.com/doganalican46/ChildMonitoringSystemApp", type: "Android" },
-            { name_tr: "JAVA | QR Kod Oluşturucu & Tarayıcı", name_en: "JAVA | QR CODE GENERATOR & SCANNER", img: "images/qrapp.png", detailsLink: "https://drive.google.com/file/d/1Vs44gpkOGcmojr9o4nVVsiFdEuRwDB0A/view?usp=sharing", type: "Android" },
-            { name_tr: "JAVA | Döviz Uygulaması", name_en: "JAVA | Currency App", img: "images/doviz.png", detailsLink: "https://drive.google.com/file/d/1uNygMMz0kHGdd_BdslHONHH9xxYKrea_/view?usp=sharing", type: "Android" },
-            { name_tr: "C++ | Üniversite Yönetim Sistemi", name_en: "C++ | University Management System", img: "images/university management system.png", detailsLink: "https://github.com/doganalican46/UniversityManagementSystem", type: "Desktop" },
-            { name_tr: "HTML-CSS | Kişisel Web Sitesi Projesi", name_en: "HTML-CSS | Personal Website Project", img: "images/cv-website.png", detailsLink: "http://cv-website.free.nf/?i=1", type: "Web" },
-            { name_tr: "PYTHON | Kaplumbağa Oyunu", name_en: "PYTHON | Turtle Game", img: "images/turtle game.png", detailsLink: "https://github.com/doganalican46/TurtleGameWithPython", type: "Desktop" },
-            { name_tr: "FLUTTER | Yapılacaklar Listesi (Yapım Aşamasında)", name_en: "FLUTTER | To Do App (In Progress)", img: "images/todoapp.png", detailsLink: "https://github.com/doganalican46/Flutter-Examples", type: "Android" },
-            { name_tr: "PHP | Blog Web Sitesi", name_en: "PHP | Bloger Website", img: "images/blogwebsite.png", detailsLink: "https://github.com/doganalican46/PHP_BlogWebsite", type: "Web" },
-            { name_tr: "ASP.NET & C# | Online Ticari Otomasyon", name_en: "ASP.NET & C# | Online Commercial Automation", img: "images/mvc-project.png", detailsLink: "https://github.com/doganalican46/OnlineTicariOtomasyon", type: "Web" },
-            { name_tr: "HTML-CSS-JS | QR Kod Oluşturucu", name_en: "HTML-CSS-JS | QRCode Generator", img: "images/QR Code Generator - Homepage Image.png", detailsLink: "https://main--qrcode-generator-free.netlify.app/", type: "Web" },
-            { name_tr: "ASP.NET & C# | Dinamik CV Sitesi", name_en: "ASP.NET & C# | Dynamic CV Website", img: "images/dynamiccvwebsite.png", detailsLink: "https://github.com/doganalican46/DynamicCV_Website/tree/master", type: "Web" },
-            { name_tr: "ASP.NET & C# | Film Blog Sitesi", name_en: "ASP.NET & C# | Movie Blog Website", img: "images/movieblog.png", detailsLink: "https://github.com/doganalican46/MovieBlogWebsite", type: "Web" },
-            { name_tr: "ASP.NET & C# | Stok Takip Uygulaması", name_en: "ASP.NET & C# | Stock Tracking App", img: "images/project.png", detailsLink: "https://github.com/doganalican46/StokTakipMVC", type: "Web" },
-            { name_tr: "HTML-CSS-JS | Giyim Web Sitesi", name_en: "HTML-CSS-JS | Clothing Website", img: "images/yakamozmodaevi.png", detailsLink: "https://yakamozmodaevi.netlify.app/", type: "Web" },
-            { name_tr: "ASP.NET & C# | Kütüphane Yönetim Sistemi", name_en: "ASP.NET & C# | Library Management System", img: "images/kutuphane.png", detailsLink: "https://github.com/doganalican46/MVC_KutuphaneSistemi", type: "Web" },
-            { name_tr: "ASP.NET & C# | QR Menü Sistemi", name_en: "ASP.NET & C# | QR Menu System", img: "images/Home.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemi", type: "Web" },
-            { name_tr: "ASP.NET & C# | Barkodlu Satış Sistemi", name_en: "ASP.NET & C# | Barcode Sales System", img: "images/SatisEkran.png", detailsLink: "https://github.com/doganalican46/LordMarket", type: "Web" },
-            { name_tr: "ASP.NET & C# | QR Menü ve Adisyon Sistemi", name_en: "ASP.NET & C# | QR Menu & Billing System", img: "images/QR Menü Sistemi.png", detailsLink: "https://github.com/doganalican46/QRMenuSistemiRevize", type: "Web" }
-        ];
-
-        let currentLang = 'tr';
-
-        function updateLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-
-            // Form Placeholders
-            const nameField = document.getElementById('form_name');
-            const emailField = document.getElementById('form_email');
-            const msgField = document.getElementById('form_msg');
-
-            if (nameField) nameField.placeholder = translations[lang].form_name;
-            if (emailField) emailField.placeholder = translations[lang].form_email;
-            if (msgField) msgField.placeholder = translations[lang].form_msg;
-
-            // Toggle Butonu Metni
-            const langBtn = document.getElementById('langToggle');
-            if (langBtn) langBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
-
-            renderProjects();
-        }
-
-        function renderProjects() {
-            const grid = document.getElementById('project-grid');
-            if (!grid) return;
-
-            grid.innerHTML = '';
-            projects.forEach(project => {
-                const projectName = currentLang === 'tr' ? project.name_tr : project.name_en;
-
-                grid.innerHTML += `
-            <div class="group relative overflow-hidden rounded-3xl glass transition-all duration-500 hover:-translate-y-2">
-                <div class="h-48 overflow-hidden">
-                    <img src="${project.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-60 group-hover:opacity-100" onerror="this.src='https://via.placeholder.com/400x250?text=Project'">
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-bold text-red-500 uppercase tracking-widest">${project.type}</span>
-                    <h3 class="text-lg font-bold mt-1 mb-4 text-white group-hover:text-red-400 transition-colors">${projectName}</h3>
-                    <a href="${project.detailsLink}" target="_blank" class="text-sm font-semibold inline-flex items-center gap-2 text-gray-300 hover:text-white transition-all">
-                        ${translations[currentLang].inspect} <i class="fas fa-external-link-alt text-[10px]"></i>
-                    </a>
-                </div>
-            </div>`;
-            });
-        }
-
-        // --- TEK VE DOĞRU İLETİŞİM FORMU GÖNDERİM MANTIĞI ---
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-
-                const btn = document.getElementById('submit-btn');
-                const originalText = btn.textContent;
-
-                btn.textContent = currentLang === 'tr' ? "Gönderiliyor..." : "Sending...";
-                btn.disabled = true;
-
-                // EmailJS Gönderimi - SIRALAMA: (Service_ID, Template_ID)
-                emailjs.sendForm('service_iwvrrn9', 'template_eqlf6i6', this)
-                    .then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: currentLang === 'tr' ? 'Başarılı!' : 'Success!',
-                            text: currentLang === 'tr' ? 'Mesajınız başarıyla iletildi.' : 'Your message has been sent successfully.',
-                            background: '#1e293b',
-                            color: '#fff',
-                            confirmButtonColor: '#ef4444'
-                        });
-                        this.reset();
-                    }, (error) => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: currentLang === 'tr' ? 'Hata!' : 'Error!',
-                            text: currentLang === 'tr' ? 'Mesaj gönderilemedi. Lütfen tekrar deneyin.' : 'Failed to send message.',
-                            footer: `Hata: ${error.text || 'Lütfen Gmail bağlantınızı kontrol edin.'}`,
-                            background: '#1e293b',
-                            color: '#fff',
-                            confirmButtonColor: '#ef4444'
-                        });
-                    })
-                    .finally(() => {
-                        btn.textContent = originalText;
-                        btn.disabled = false;
-                    });
-            });
-        }
-
-        // Lang Switch Click
-        document.getElementById('langToggle').addEventListener('click', () => {
-            updateLanguage(currentLang === 'tr' ? 'en' : 'tr');
-        });
-
-        // Scroll Top Button Logic
-        window.onscroll = () => {
-            const btn = document.getElementById("scrollTopBtn");
-            if (btn) {
-                if (document.documentElement.scrollTop > 400) btn.classList.add("show");
-                else btn.classList.remove("show");
-            }
-        };
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            updateLanguage('tr');
-            if (typeof emailjs !== 'undefined') {
-                emailjs.init("uWnEB4TnXLiSdMTEU");
-            }
-        });
-        // Mobil Menü Açma/Kapama
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-            navMenu.classList.toggle('flex');
-        });
-
-        // Linklere tıklandığında menüyü kapat (Mobilde)
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) {
-                    navMenu.classList.add('hidden');
-                    navMenu.classList.remove('flex');
-                }
-            });
-        });
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
 </body>
-
 </html>
