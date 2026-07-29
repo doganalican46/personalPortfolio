@@ -7,7 +7,8 @@ Canlı site: [doganalican46.dev](https://www.doganalican46.dev/)
 ## Özellikler
 
 - Türkçe ve İngilizce içerik desteği
-- Web, Android ve masaüstü proje filtreleri
+- Varsayılan açık tema ve kalıcı açık/koyu tema seçimi
+- Web, mobil ve masaüstü proje filtreleri
 - EmailJS ile çalışan iletişim formu
 - Türkçe ve İngilizce CV indirme bağlantıları
 - Mobil uyumlu, klavye ile kullanılabilir arayüz

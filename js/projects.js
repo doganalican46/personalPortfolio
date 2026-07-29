@@ -1,5 +1,26 @@
 window.PROJECTS = [
   {
+    name: { tr: "FLUTTER | Orbit Dash — Yörünge Kaçışı", en: "FLUTTER | Orbit Dash — Orbital Escape" },
+    image: "images/mobile/orbit-dash.png",
+    url: null,
+    type: "Android",
+    isNew: true
+  },
+  {
+    name: { tr: "FLUTTER | Tarih ve Etkinlik Hatırlatıcısı", en: "FLUTTER | Date & Event Reminder" },
+    image: "images/mobile/countdown-reminder.png",
+    url: null,
+    type: "Android",
+    isNew: true
+  },
+  {
+    name: { tr: "FLUTTER | Mini Brain Arcade", en: "FLUTTER | Mini Brain Arcade" },
+    image: "images/mobile/mini-brain-arcade.png",
+    url: null,
+    type: "Android",
+    isNew: true
+  },
+  {
     name: { tr: "PYTHON | Otobüs Takip Sistemi", en: "PYTHON | Bus Tracking System" },
     image: "images/bus tracking system.png",
     url: "https://github.com/doganalican46/BusTrackingSystem",

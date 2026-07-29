@@ -9,7 +9,8 @@
 
   const state = {
     language: getSavedLanguage(),
-    projectFilter: "All"
+    projectFilter: "All",
+    theme: document.documentElement.dataset.theme === "light" ? "light" : "dark"
   };
 
   const elements = {
@@ -17,6 +18,7 @@
     menuButton: document.getElementById("mobile-menu-button"),
     navigation: document.getElementById("primary-navigation"),
     languageButton: document.getElementById("language-toggle"),
+    themeButton: document.getElementById("theme-toggle"),
     projectGrid: document.getElementById("project-grid"),
     projectCount: document.getElementById("project-count"),
     filterButtons: [...document.querySelectorAll("[data-filter]")],
@@ -71,9 +73,39 @@
     elements.navigation.setAttribute("aria-label", dictionary.nav_label);
     document.querySelector(".project-filters")?.setAttribute("aria-label", dictionary.filter_label);
     elements.scrollTopButton.setAttribute("aria-label", dictionary.scroll_top);
+    updateThemeButton();
     updateMenuAccessibility();
     saveLanguage(language);
     renderProjects();
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem("portfolio-theme-v2", theme);
+    } catch {
+      // The default light theme still works when storage is unavailable.
+    }
+  }
+
+  function updateThemeButton() {
+    const switchesToLight = state.theme === "dark";
+    const label = switchesToLight ? translate("theme_light") : translate("theme_dark");
+    const icon = elements.themeButton.querySelector("i");
+
+    elements.themeButton.setAttribute("aria-label", label);
+    elements.themeButton.title = label;
+    icon.className = switchesToLight ? "fa-regular fa-sun" : "fa-regular fa-moon";
+  }
+
+  function setTheme(theme, persist = true) {
+    state.theme = theme;
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content",
+      theme === "dark" ? "#0b0f19" : "#f4f6fa"
+    );
+    updateThemeButton();
+    if (persist) saveTheme(theme);
   }
 
   function createProjectCard(project) {
@@ -84,37 +116,64 @@
     const imageWrap = document.createElement("div");
     imageWrap.className = "project-image";
 
-    const image = document.createElement("img");
-    image.src = project.image;
-    image.alt = translate("project_image")(name);
-    image.loading = "lazy";
-    image.decoding = "async";
-    image.addEventListener("error", () => {
-      image.remove();
-      imageWrap.classList.add("image-unavailable");
+    if (project.image) {
+      const image = document.createElement("img");
+      image.src = project.image;
+      image.alt = translate("project_image")(name);
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => {
+        image.remove();
+        imageWrap.classList.add("image-unavailable");
+        imageWrap.setAttribute("aria-label", name);
+      }, { once: true });
+      imageWrap.append(image);
+    } else {
+      imageWrap.classList.add("project-visual", `project-visual-${project.visual.theme}`);
+      const visualIcon = document.createElement("i");
+      visualIcon.className = `fa-solid ${project.visual.icon}`;
+      visualIcon.setAttribute("aria-hidden", "true");
+      imageWrap.append(visualIcon);
       imageWrap.setAttribute("aria-label", name);
-    }, { once: true });
-    imageWrap.append(image);
+    }
 
     const body = document.createElement("div");
     body.className = "project-body";
 
+    const meta = document.createElement("div");
+    meta.className = "project-meta";
+
     const type = document.createElement("span");
     type.className = "project-type";
     type.textContent = translate("project_types")[project.type];
+    meta.append(type);
+
+    if (project.isNew) {
+      const newBadge = document.createElement("span");
+      newBadge.className = "project-new";
+      newBadge.textContent = translate("new_badge");
+      meta.append(newBadge);
+    }
 
     const title = document.createElement("h3");
     title.textContent = name;
 
-    const link = document.createElement("a");
-    link.className = "project-link";
-    link.href = project.url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.innerHTML = `<span>${translate("inspect")}</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>`;
-    link.setAttribute("aria-label", `${translate("inspect")}: ${name}`);
+    let link;
+    if (project.url) {
+      link = document.createElement("a");
+      link.className = "project-link";
+      link.href = project.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.innerHTML = `<span>${translate("inspect")}</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>`;
+      link.setAttribute("aria-label", `${translate("inspect")}: ${name}`);
+    } else {
+      link = document.createElement("span");
+      link.className = "project-link project-link-disabled";
+      link.innerHTML = `<span>${translate("coming_soon")}</span><i class="fa-regular fa-clock" aria-hidden="true"></i>`;
+    }
 
-    body.append(type, title, link);
+    body.append(meta, title, link);
     card.append(imageWrap, body);
     return card;
   }
@@ -277,10 +336,14 @@
     elements.languageButton.addEventListener("click", () => {
       setLanguage(state.language === "tr" ? "en" : "tr");
     });
+    elements.themeButton.addEventListener("click", () => {
+      setTheme(state.theme === "dark" ? "light" : "dark");
+    });
 
     setupNavigation();
     setupContactForm();
     setupScrollControls();
+    setTheme(state.theme, false);
     setLanguage(state.language);
   }
 

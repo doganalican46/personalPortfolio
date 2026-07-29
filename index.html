@@ -4,13 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ali Can Doğan'ın web, masaüstü ve mobil yazılım projelerini içeren kişisel portfolyosu.">
-  <meta name="theme-color" content="#0b0f19">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#f4f6fa">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ali Can Doğan | Software Engineer">
   <meta property="og:description" content="Modern web teknolojileri ve sistem mimarileri üzerine odaklanan yazılım mühendisi.">
   <meta property="og:url" content="https://www.doganalican46.dev/">
   <title>Ali Can Doğan | Software Engineer</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("portfolio-theme-v2") === "dark" ? "dark" : "light";
+    } catch {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
   <link rel="icon" href="images/website_icon.png">
   <link rel="preload" href="images/2.png" as="image">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -36,7 +43,13 @@
         <a href="#skills" data-i18n="nav_skills">Yetenekler</a>
         <a href="#projects" data-i18n="nav_projects">Projeler</a>
         <a href="#contact" data-i18n="nav_contact">İletişim</a>
-        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">EN</button>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Açık temaya geç"
+            title="Açık temaya geç">
+            <i class="fa-regular fa-sun" aria-hidden="true"></i>
+          </button>
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">EN</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -142,7 +155,7 @@
           <div class="project-filters" role="group" aria-label="Projeleri filtrele">
             <button class="filter-button active" type="button" data-filter="All" aria-pressed="true" data-i18n="filter_all">Tümü</button>
             <button class="filter-button" type="button" data-filter="Web" aria-pressed="false">Web</button>
-            <button class="filter-button" type="button" data-filter="Android" aria-pressed="false">Android</button>
+            <button class="filter-button" type="button" data-filter="Android" aria-pressed="false" data-i18n="filter_mobile">Mobil</button>
             <button class="filter-button" type="button" data-filter="Desktop" aria-pressed="false" data-i18n="filter_desktop">Masaüstü</button>
           </div>
           <p class="project-count" id="project-count" aria-live="polite"></p>
